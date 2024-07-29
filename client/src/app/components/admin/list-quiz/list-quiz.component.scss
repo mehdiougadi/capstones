@@ -1,0 +1,106 @@
+@import '../../../common-client/constant/constant.scss';
+
+p,
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    font-size: 50px;
+}
+
+.quiz-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+    margin: $base-margin;
+    border-radius: $base-border-radius;
+    width: 350px;
+    height: 350px;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.quiz-list p {
+    word-wrap: break-word;
+    overflow: auto;
+}
+
+.quizzes {
+    display: flex;
+    flex-direction: column;
+    gap: $base-gap;
+    width: 100%;
+}
+
+.quiz.container:hover {
+    background-color: $accent-color;
+    color: black;
+}
+
+.quiz.container.selected {
+    background-color: $accent-color;
+    color: black;
+
+    .quiz.container i {
+        color: black;
+    }
+}
+
+.quiz.container i:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.quiz.container {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    color: white;
+    background-color: $quiz-in-list;
+    margin: 0 10px;
+    padding: $base-padding;
+    border-radius: $base-border-radius;
+}
+
+.main.quiz.info {
+    display: flex;
+    z-index: 0;
+    align-items: center;
+    width: 100%;
+}
+
+.quiz.date.info {
+    display: flex;
+    .date {
+        margin: 0;
+    }
+}
+
+.quiz-title {
+    font-weight: bold;
+    text-align: start;
+    flex-grow: 1;
+    height: fit-content;
+}
+
+.options.holder {
+    display: flex;
+    background-color: transparent;
+    z-index: 1;
+    flex-direction: row;
+    gap: $base-gap;
+}
+
+.options.holder i:hover {
+    color: $primary-color;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $accent-color;
+    border-radius: 2rem;
+}

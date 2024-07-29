@@ -1,0 +1,47 @@
+{
+    "id": "1a2b3c",
+    "title": "Random Quiz",
+    "fkyou": "asdadada",
+    "description": "General Knowledge",
+    "lastModification": "2018-11-13T20:20:39+00:00",
+    "questions": [
+      {
+        "text": "What is the capital of France?",
+        "type": "QCM",
+        "points": 10,
+        "choices": [
+          { "text": "Berlin", "random": "string", "isCorrect": false },
+          { "text": "London", "isCorrect": false },
+          { "text": "Paris", "isCorrect": true },
+          { "text": "Madrid", "isCorrect": false }
+        ],
+        "date": "2023-01-31T12:00:00Z"
+      },
+      {
+        "text": "Which planet is known as the Red Planet?",
+        "type": "QCM",
+        "points": 10,
+        "choices": [
+          { "text": "Earth", "isCorrect": false },
+          { "text": "Mars", "isCorrect": true },
+          { "text": "Venus", "isCorrect": false },
+          { "text": "Jupiter", "isCorrect": false }
+        ],
+        "date": "2024-01-31T12:30:00Z"
+      },
+      {
+        "text": "Who wrote 'Romeo and Juliet'?",
+        "type": "QCM",
+        "points": 10,
+        "choices": [
+          { "text": "Charles Dickens", "isCorrect": false },
+          { "text": "Jane Austen", "isCorrect": false },
+          { "text": "William Shakespeare", "isCorrect": true },
+          { "text": "Homer", "isCorrect": false }
+        ],
+        "date": "2024-01-31T13:00:00Z"
+      }
+    ],
+    "duration": 60,
+    "visible": true
+  }

@@ -1,0 +1,37 @@
+@import '../../../common-client/constant/constant.scss';
+
+.dialog {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: $login-width;
+}
+
+.mat-mdc-dialog-title {
+    text-align: center;
+    font-size: $login-title-font-size;
+}
+
+.mat-mdc-dialog-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: $confirm-modal-text-p;
+    padding: $base-padding;
+}
+
+.p {
+    text-align: center;
+}
+
+.mat-mdc-dialog-actions {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.mat-mdc-dialog-actions button {
+    background-color: $primary-color;
+    color: white;
+    width: $login-button-width;
+}

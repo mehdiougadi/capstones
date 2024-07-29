@@ -1,0 +1,33 @@
+<div class="scrollable-content">
+    <app-histogram
+        *ngIf="currentRoom && currentRoom.questionStats"
+        class="histogram"
+        [currentRoom]="currentRoom"
+        [isGameOver]="isGameOver"
+        [index]="indexQuestion"
+        [isResultsPage]="isResultsPage"
+    ></app-histogram>
+
+    <div *ngIf="listPlayers.length > 0" class="result-list">
+        <h2>Résultats des joueurs :</h2>
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>Nom du joueur</th>
+                    <th>Score</th>
+                    <th>Points bonus</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let player of listPlayers">
+                    <td>{{ player.name }}</td>
+                    <td>{{ player.points }}</td>
+                    <td>{{ player.bonusPoints }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="button-container">
+        <button routerLink="../../pages/home" class="return-button">Retourner à l'accueil</button>
+    </div>
+</div>

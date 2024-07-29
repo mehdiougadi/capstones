@@ -1,0 +1,73 @@
+@import '../../../common-client/constant/constant.scss';
+.scrollable-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: $gap;
+    max-height: $margin-height;
+    overflow-y: auto;
+}
+
+.histogram,
+.result-list {
+    background-color: white;
+    padding: $margin-table;
+    box-shadow: $result-zero $result-medium $result-max;
+    border: $result-min solid #ddd;
+    width: calc($result-list-width - $result-list-width-px);
+    min-height: $min-height;
+    flex-basis: calc($flex-size - $gap);
+}
+
+.result-heading,
+.result-list h2 {
+    color: white;
+    margin-bottom: $gap;
+}
+.result-list {
+    margin-right: $margin-table;
+}
+
+.results-table {
+    width: $width-box-result;
+    border-collapse: collapse;
+    margin-bottom: $margin-table;
+    margin-right: $margin-table;
+}
+
+.results-table th,
+.results-table td {
+    padding: $gap;
+    border: $result-min solid #ddd;
+    text-align: left;
+    color: black;
+}
+
+.results-table th {
+    background-color: #3498db;
+    color: white;
+}
+
+.results-table tbody tr:nth-child(even),
+.results-table tbody tr:nth-child(odd) {
+    background-color: white;
+}
+
+.button-container {
+    text-align: center;
+}
+
+.return-button {
+    background-color: #4caf50;
+    color: white;
+    padding: $buttons-container-margin $margin-top-histogram;
+    font-size: $no-results-message-p-margin;
+    border: none;
+    border-radius: $count-bottom;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.return-button:hover {
+    background-color: #45a049;
+}

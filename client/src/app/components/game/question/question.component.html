@@ -1,0 +1,27 @@
+<div class="grid container">
+    <div *ngIf="!this.inputQuestion.betweenRound">
+        <div class="option container" *ngIf="inputQuestion.question.type === 'QCM'">
+            <button
+                *ngFor="let option of inputQuestion.question.choices; let i = index"
+                (click)="!inputQuestion.room.roundFinished && selectOption(option)"
+                [disabled]="confirmChoices"
+                [ngClass]="getClassForOption(option)"
+            >
+                Choix {{ i + 1 }} → {{ option.text }}
+            </button>
+        </div>
+    </div>
+    <div *ngIf="inputQuestion.question.type === 'QRL'">
+        <textarea
+            [(ngModel)]="userResponse"
+            placeholder="Votre réponse ici"
+            (input)="checkCharacterLimit($event)"
+            (focus)="onInputFocus()"
+            (blur)="onInputBlur()"
+            [disabled]="confirmChoices"
+            maxlength="200"
+        >
+        </textarea>
+        <div class="character-count">{{ characterCount }} caractères restants</div>
+    </div>
+</div>

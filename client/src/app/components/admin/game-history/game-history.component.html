@@ -1,0 +1,26 @@
+<div class="game-history-container">
+    <h2>Historique des parties</h2>
+    <div class="buttons-container">
+        <button (click)="sortHistory('quizName')">Trier par nom</button>
+        <button (click)="sortHistory('startTime')">Trier par date</button>
+        <button (click)="resetHistory()">Réinitialiser l'historique</button>
+    </div>
+    <table class="history-table">
+        <thead>
+            <tr>
+                <th class="quiz-name">Nom du jeu-questionnaire</th>
+                <th class="start-time">Date et heure de début</th>
+                <th class="player-count">Nombre de joueurs</th>
+                <th class="top-score">Meilleur score</th>
+            </tr>
+        </thead>
+        <tbody class="game history">
+            <tr *ngFor="let history of gameHistories">
+                <td>{{ history.quizName }}</td>
+                <td>{{ history.startTime | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+                <td>{{ history.playerCount }}</td>
+                <td>{{ history.topScore }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

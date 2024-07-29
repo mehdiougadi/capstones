@@ -1,0 +1,7 @@
+<section class="question container {{ question.type }}" (click)="showModalQuestion(question)">
+    <div>
+        <p>#{{ question.type }}</p>
+        <p>{{ question.text }}</p>
+    </div>
+    <p class="date" *ngIf="displayDate">{{ question.date | date: 'yyyy-MM-dd' }}</p>
+</section>

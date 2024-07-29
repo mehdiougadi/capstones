@@ -1,0 +1,169 @@
+@import '../../common-client/constant/constant.scss';
+
+section,
+section > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: $base-gap;
+}
+
+p,
+h1 {
+    color: white;
+    margin: 0;
+}
+
+p {
+    font-size: 20px;
+    font-weight: bolder;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+section {
+    height: $home-page-height;
+}
+
+.content.holder {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.during.round.container {
+    display: flex;
+    gap: $base-gap;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.info.room.holder {
+    display: flex;
+    gap: $base-gap;
+    flex-direction: row;
+}
+
+.code.container {
+    display: flex;
+    justify-content: center;
+}
+
+.code.container h1 {
+    width: fit-content;
+}
+
+.checkbox.button {
+    padding: $base-padding;
+    border-radius: $base-border-radius;
+    border: 2px solid black;
+    font-size: 40px;
+    gap: $base-gap;
+}
+
+.checkbox label {
+    color: white;
+}
+
+.locked {
+    background-color: red;
+}
+
+.unlocked {
+    background-color: green;
+}
+
+h1.access-code {
+    text-align: center;
+    width: fit-content;
+    text-decoration: NONE;
+    background-color: white;
+    color: black;
+    border-radius: $base-border-radius;
+    padding: $base-padding;
+    font-weight: lighter;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.button.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button.start {
+    font-size: 25px;
+    padding: $base-padding;
+    border-radius: $base-border-radius;
+}
+
+.button.start:hover {
+    background-color: $accent-color;
+}
+
+.title {
+    color: black;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.button.section {
+    display: flex;
+    gap: $base-gap;
+}
+
+.player.info,
+.info.quiz {
+    background-color: white;
+    padding: $base-padding;
+    border-radius: $base-border-radius;
+    border: 2px solid black;
+}
+
+.timer.title {
+    text-decoration: NONE;
+    color: white;
+    font-size: 60px;
+    font-weight: bolder;
+    height: fit-content;
+}
+
+.starting.round {
+    display: flex;
+    align-items: center;
+    gap: $base-gap;
+}
+
+.button.next.state {
+    font-size: 25px;
+    padding: $base-padding;
+    border-radius: $base-border-radius;
+}
+
+.button.next.state:hover {
+    background-color: $accent-color;
+}
+
+.context.question.holder {
+    display: flex;
+    align-items: center;
+    gap: $base-gap;
+    p {
+        color: white;
+        height: fit-content;
+    }
+}
+
+.rature {
+    text-decoration: line-through;
+}
+
+.hidden {
+    display: none;
+}
+

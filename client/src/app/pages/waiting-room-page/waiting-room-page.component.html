@@ -1,0 +1,57 @@
+<section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="bird-container">
+                <div class="bird">
+                    <div class="bird-beak2"></div>
+                    <div class="bird-beak1"></div>
+                    <div class="bird-body"></div>
+                    <div class="bird-eye"></div>
+                    <div class="bird-pupil"></div>
+                    <div class="bird-wing"></div>
+                    <div class="bird-hair"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-header [currentState]="currentStateHeader"></app-header>
+
+    <div [ngSwitch]="roundStarting" class="round container">
+        <ng-container *ngSwitchCase="false" class="round wait">
+            <div *ngIf="currentRoom">
+                <div class="content holder">
+                    <div class="info players container">
+                        <h1>Les joueurs présents</h1>
+                        <app-player-waiting-list [currentRoom]="currentRoom"></app-player-waiting-list>
+                    </div>
+                    <div class="info room container">
+                        <div class="data container">
+                            <h1 class="player profil">Votre nom: {{ currentPlayer.name }}</h1>
+                            <h1 class="access code">Code d'Accès de la salle: {{ currentRoom.accessCode }}</h1>
+                            <div class="quiz container">
+                                <h1>Le Questionnaire</h1>
+                                <app-quiz-info-display [currentQuiz]="currentRoom.quiz"></app-quiz-info-display>
+                            </div>
+                        </div>
+                        <div class="button options">
+                            <button (click)="currentPlayerLeft()">Quitter la chambre</button>
+                        </div>
+                    </div>
+                    <app-sidebar [currentPlayer]="currentPlayer"></app-sidebar>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngSwitchCase="true">
+            <div class="starting">
+                <h1>Le quiz commence dans</h1>
+                <app-timer [room]="currentRoom"></app-timer>
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
+                <div class="quiz-info" [ngClass]="{ 'white-background': roundStarting }">
+                    <app-quiz-info-display [currentQuiz]="currentRoom.quiz"></app-quiz-info-display>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</section>

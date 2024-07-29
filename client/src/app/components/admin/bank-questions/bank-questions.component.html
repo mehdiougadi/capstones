@@ -1,0 +1,14 @@
+<section>
+    <div class="options container">
+        <label> <input type="checkbox" [(ngModel)]="showQRL" /> QRL </label>
+        <label> <input type="checkbox" [(ngModel)]="showQCM" /> QCM </label>
+    </div>
+    <div class="bank quiz">
+        <div *ngFor="let question of sortListQuestion()">
+            <app-question-in-bank
+                [question]="question"
+                *ngIf="(showQRL && question.type === questionType.QRL) || (showQCM && question.type === questionType.QCM)"
+            ></app-question-in-bank>
+        </div>
+    </div>
+</section>

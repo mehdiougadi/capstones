@@ -1,0 +1,44 @@
+<div class="admin container">
+    <section class="content container" [ngSwitch]="currentStatePage">
+        <div *ngSwitchCase="adminPageState.DEFAULT">
+            <app-header [currentState]="currentStateHeader"></app-header>
+            <section class="default content">
+                <app-list-quiz (currentQuizUpdated)="onCurrentQuizUpdated($event)"></app-list-quiz>
+                <div class="button container">
+                    <button (click)="changeState(adminPageState.EDIT)">Créer/Modifier un Jeu-questionnaire</button>
+                    <button (click)="changeState(adminPageState.DISPLAY)">Banque de questions disponible</button>
+                    <button (click)="changeState(adminPageState.GAME)">Historique des jeux</button>
+                    <button class="state button" (click)="exportQuizJson(this['quizManagerService'].currentQuiz)" [disabled]="isExportButtonDisabled">
+                        Exporter le quiz sélectionné
+                    </button>
+                    <button class="state button" (click)="importQuiz()" [disabled]="isImportButtonDisabled">Importer un quiz</button>
+                    <label>
+                        <input type="file" class="file-upload" (change)="onFileSelected($event)" #myInput />
+                    </label>
+                </div>
+            </section>
+        </div>
+        <div *ngSwitchCase="adminPageState.EDIT">
+            <section class="edit content">
+                <app-list-quiz></app-list-quiz>
+                <app-create-quiz></app-create-quiz>
+            </section>
+            <div class="option container">
+                <button class="state button" (click)="changeState(adminPageState.DEFAULT)">Retour à la page administration</button>
+                <button class="state button" (click)="saveQuiz()">Sauvegarder le Questionnaire</button>
+            </div>
+        </div>
+        <div *ngSwitchCase="adminPageState.DISPLAY">
+            <app-bank-questions></app-bank-questions>
+            <div class="option container">
+                <button class="state button" (click)="changeState(adminPageState.DEFAULT)">Retour à la page administration</button>
+                <button class="state button" (click)="showModalAddQuestion()">Ajouter une question</button>
+            </div>
+        </div>
+        <div *ngSwitchCase="adminPageState.GAME">
+            <app-header [currentState]="currentStateHeader"></app-header>
+            <app-game-history></app-game-history>
+            <button class="state button" (click)="changeState(adminPageState.DEFAULT)">Retour à la page administration</button>
+        </div>
+    </section>
+</div>

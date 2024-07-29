@@ -1,0 +1,67 @@
+@import '../../common-client/constant/constant.scss';
+
+.home.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    min-height: $home-page-height;
+    gap: $home-option-container-gap;
+}
+
+.button.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+    justify-content: center;
+    align-self: center;
+    height: fit-content;
+    gap: $home-option-container-gap;
+}
+
+.button.container button {
+    height: fit-content;
+    width: fit-content;
+    text-align: center;
+    padding: $home-option-button-padding;
+    font-size: $home-option-button-font-size;
+    border-radius: $home-option-button-border-radius;
+}
+
+.button.container button.settings {
+    display: flex;
+    align-items: center;
+    font-size: $home-admin-button-font-size;
+}
+
+.button.container button:hover {
+    color: black;
+    background-color: $accent-color;
+}
+
+.team-name {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+    color: rgb(255, 255, 255);
+}
+
+.header-item {
+    justify-content: center;
+    text-align: center;
+}
+
+.footer-item {
+    text-align: center;
+}
+
+.settings i {
+    color: grey;
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.server-message {
+    justify-content: center;
+    width: 20%;
+    min-width: min-content;
+}

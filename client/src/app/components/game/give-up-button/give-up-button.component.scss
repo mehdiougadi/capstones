@@ -1,0 +1,13 @@
+@import '../../../common-client/constant/constant.scss';
+
+button {
+    color: white;
+    background-color: #141726;
+    width: $base-button-width;
+    font-size: $base-font-size;
+    border-radius: $base-border-radius;
+}
+
+button:hover {
+    background-color: #bd218e;
+}

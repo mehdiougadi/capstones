@@ -1,0 +1,33 @@
+@import '../../../common-client/constant/constant.scss';
+
+.question.container {
+    display: flex;
+    color: white;
+    font-weight: bold;
+    font-size: $base-font-size;
+    width: $question-container-width;
+    margin: $question-container-margin;
+    padding: $question-container-padding;
+    border-radius: $question-container-border-radius;
+}
+
+.question.container:hover {
+    color: black;
+}
+
+.question.container div {
+    display: flex;
+    gap: $question-text-container-gap;
+}
+
+.QCM {
+    background-color: $question-qcm-tag;
+}
+
+.QRL {
+    background-color: $question-qrl-tag;
+}
+
+.date {
+    margin-left: auto;
+}

@@ -1,0 +1,107 @@
+<div class="histogram">
+    <div class="question-container">
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: green"></div>
+                <div class="legend-label">Bonnes réponses</div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: red"></div>
+                <div class="legend-label">Mauvaises réponses</div>
+            </div>
+        </div>
+        <h3 *ngIf="isResultsPage && currentRoom && currentRoom.questionStats[currentIndex]">
+            Question {{ currentRoom.questionStats[currentIndex].questionIndex + 1 }}
+        </h3>
+
+        <div
+            class="bar-container"
+            *ngIf="
+                currentRoom &&
+                currentRoom.questionStats[currentIndex] &&
+                currentRoom.questionStats[currentIndex].stats &&
+                currentRoom.questionStats[currentIndex].questionType === 'QCM'
+            "
+        >
+            <div class="bar flex-container" *ngFor="let choice of getChoices(currentRoom.questionStats[currentIndex].stats)">
+                <div class="choice">{{ truncateAnswer(choice, 4) }}</div>
+                <div class="bar-graph">
+                    <div
+                        *ngIf="getBarCount(currentRoom.questionStats[currentIndex].stats, choice) > 0"
+                        class="fill"
+                        [style.--bar-height]="getBarHeight(currentRoom.questionStats[currentIndex].stats, choice)"
+                        [style.background-color]="getBarColor(currentRoom.questionStats[currentIndex].stats, choice)"
+                    ></div>
+                    <span class="count">{{ getBarCount(currentRoom.questionStats[currentIndex].stats, choice) }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="bar-container"
+            *ngIf="
+                currentRoom &&
+                currentRoom.questionStats[currentIndex] &&
+                currentRoom.questionStats[currentIndex].stats &&
+                currentRoom.questionStats[currentIndex].questionType === 'QRL'
+            "
+        >
+            <div *ngIf="!isResultsPage" class="bar-container">
+                <div class="bar flex-container">
+                    <div class="choice">Actif</div>
+                    <div class="bar-graph">
+                        <div
+                            class="fill-qrl"
+                            [style.--bar-qrl]="
+                                getQRLChangedBarHeight(
+                                    currentRoom.questionStats[currentIndex].statsQRL.notModifiedLastSeconds,
+                                    currentRoom.questionStats[currentIndex].statsQRL.modifiedLastSeconds
+                                )
+                            "
+                            [style.background-color]="getBarColorQRLChanged(currentRoom.questionStats[currentIndex].statsQRL, 'modifiedLastSeconds')"
+                        ></div>
+                        <span class="count">{{ currentRoom.questionStats[currentIndex].statsQRL.modifiedLastSeconds }}</span>
+                    </div>
+                </div>
+
+                <div class="bar flex-container">
+                    <div class="choice">Inactif</div>
+                    <div class="bar-graph">
+                        <div
+                            class="fill-qrl"
+                            [style.--bar-qrl]="
+                                getQRLChangedBarHeight(
+                                    currentRoom.questionStats[currentIndex].statsQRL.modifiedLastSeconds,
+                                    currentRoom.questionStats[currentIndex].statsQRL.notModifiedLastSeconds
+                                )
+                            "
+                            [style.background-color]="
+                                getBarColorQRLChanged(currentRoom.questionStats[currentIndex].statsQRL, 'notModifiedLastSeconds')
+                            "
+                        ></div>
+                        <span class="count">{{ currentRoom.questionStats[currentIndex].statsQRL.notModifiedLastSeconds }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="isResultsPage && currentRoom.questionStats[currentIndex].questionType === 'QRL'" class="bar-container">
+            <div class="bar flex-container" *ngFor="let percentage of getPercentagesCount(currentRoom.questionStats[currentIndex].questionIndex)">
+                <div class="choice">{{ percentage.percentage }}</div>
+                <div class="bar-graph">
+                    <div
+                        class="fill-qrl"
+                        [style.--bar-qrl]="getPercentageHeightQRL(currentRoom.questionStats[currentIndex].statsQRL.scores, percentage.count)"
+                        [style.background-color]="getPercentageColorQRL(percentage.percentage)"
+                    ></div>
+                    <span class="count">{{ percentage.count }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="buttons-container" *ngIf="isGameOver">
+        <button *ngIf="isResultsPage" (click)="previous()">Précedent</button>
+        <button *ngIf="isResultsPage" (click)="next()">Suivant</button>
+    </div>
+</div>
