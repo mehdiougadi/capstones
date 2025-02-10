@@ -63,8 +63,5 @@ flutter pub get
 flutter run
 ```
 
-## 🔥 Contributing
-We welcome contributions! Please fork the repository, create a new branch, and submit a pull request.
-
 ## 📩 Contact
 For inquiries, suggestions, or collaboration, feel free to reach out to us at Mehdiougadiofficial@gmail.com.
