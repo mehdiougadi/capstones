@@ -48,7 +48,7 @@ git clone https://github.com/mehdiougadi/PolyQuiz.git
 
 2. Navigate to the project folder:
 ```bash
-cd desktop_client
+cd mobile_client
 ```
 
 3. Install dependencies:
