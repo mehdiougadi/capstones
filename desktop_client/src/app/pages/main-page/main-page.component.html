@@ -1,0 +1,37 @@
+<app-logo></app-logo>
+<div class="container justified">
+    <section id="server-message" class="justified">
+        <div class="justified">
+            <div class="button-box">
+                <button (click)="changePopupLobbyIdState()" class="home-option" role="button" routerLink="/game">Joindre une partie</button>
+                <button class="home-option" role="button" routerLink="/creation">Créer une partie</button>
+                <button class="home-option" role="button" routerLink="/administration">Administer les jeux</button>
+            </div>
+        </div>
+    </section>
+</div>
+<footer class="footer-item">
+    <h4 class="team-name">Équipe 208</h4>
+    <p>
+        <span>Nicolas Poirier</span>, <span>Miguel Gascon</span>, <span>Jasmine Romain</span>, <span>Ahmed Zghal</span>, <span>Evan Blanc</span>,
+        <span>Xavier Schlegel</span>
+    </p>
+</footer>
+
+<div *ngIf="isPopupLobbyIdOpen" class="popup">
+    <div class="popup-content">
+        <span class="close-btn" (click)="changePopupLobbyIdState()">&times;</span>
+        <h3>Entrez le code de la partie</h3>
+        <input type="text" id="lobby-code" [(ngModel)]="lobbyCode" maxlength="4" (keyup)="onKeyUp($event)" autofocus />
+        <button mat-button class="join-room-btn" (click)="joinRoomButton()">Joindre</button>
+    </div>
+</div>
+
+<div *ngIf="isPopupNameOpen" class="popup">
+    <div class="popup-content">
+        <span class="close-btn" (click)="changePopupNameState()">&times;</span>
+        <h3>Choisissez votre nom</h3>
+        <input type="text" id="player-name" [(ngModel)]="playerName" maxlength="20" (keyup)="onKeyUp($event)" autofocus />
+        <button mat-button class="join-lobby-btn" (click)="joinLobbyButton()">Joindre</button>
+    </div>
+</div>

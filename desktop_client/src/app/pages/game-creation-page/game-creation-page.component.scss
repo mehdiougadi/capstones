@@ -1,0 +1,226 @@
+body::-webkit-scrollbar {
+    display: none;
+}
+
+a {
+    cursor: pointer;
+}
+
+.container img {
+    max-width: 75%;
+    height: auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-item {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.games-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
+    width: max-content;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+@media (max-width: 950px) {
+    .games-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+.game-box {
+    position: relative;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    overflow: hidden;
+    transition: height 0.3s ease;
+}
+
+.game-box::-webkit-scrollbar {
+    display: none;
+}
+
+.game-box.collapsed:hover {
+    filter: brightness(90%);
+    transition: filter 0.2s;
+    cursor: pointer;
+}
+
+.game-box.expanded {
+    overflow: auto;
+}
+
+.game-box.expanded .game-title {
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    justify-content: center;
+}
+
+.game-box.collapsed {
+    text-align: center;
+    justify-content: bottom;
+}
+
+.game-box.collapsed .game-title {
+    margin: 10px;
+    font-weight: bold;
+    font-size: 1.3em;
+    text-align: center;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.game-title {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    max-width: 375px;
+}
+
+.game-duration {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.question-box {
+    border: 1px solid #eee;
+    margin-top: 10px;
+    border-radius: 4px;
+    padding: 5px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.question-box:hover {
+    background-color: #efefef;
+}
+
+.question-title {
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.question-list {
+    height: 200px;
+    width: 407px;
+    padding: 0 20px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.choices-wrapper {
+    margin-top: 10px;
+    background: #f7f7f7;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.choice-box {
+    padding: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.option-jeu {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: auto;
+}
+
+.game-box.collapsed .game-duration {
+    display: none;
+}
+
+.game-box.expanded .game-duration {
+    display: block;
+}
+
+button {
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    margin-top: 10px;
+    margin-left: 15px;
+    transition: background-color 0.2s;
+}
+
+.create-btn {
+    background-color: #007bff;
+}
+
+.create-btn:hover {
+    background-color: #0056b3;
+}
+
+.test-btn {
+    background-color: #28ac68;
+}
+
+.test-btn:hover {
+    background-color: #207a4c;
+}

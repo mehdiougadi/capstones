@@ -1,0 +1,7 @@
+<div class="timer-container">
+    <div *ngIf="questionState !== questionStateEnum.Evaluating" class="circle">{{ time }}</div>
+    <button mat-icon-button (click)="togglePlayPauseTimer()" *ngIf="questionState === questionStateEnum.InQuestion">
+        <mat-icon>{{ this.getIsTimerPlaying() ? 'pause' : 'play_arrow' }}</mat-icon>
+    </button>
+    <button class="panic-button" (click)="setPanicMode()" *ngIf="isPanicModeAvailable()">PANIQUE !!!</button>    
+</div>

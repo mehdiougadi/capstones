@@ -1,0 +1,29 @@
+.header-item {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: #fff;
+    padding: 2vh 2vw;
+    background-color: none;
+}
+
+a {
+    cursor: pointer;
+}
+
+.logo-home {
+    height: 15vh;
+}
+
+.logo-admin {
+    height: 10vh;
+}
+
+.logo-game {
+    height: 5vh;
+}

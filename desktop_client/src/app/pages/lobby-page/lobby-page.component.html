@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+
+<div class="container">
+    <app-logo></app-logo>
+    <div class="top-container">
+        <div class="room-id">
+            {{ roomId }}
+        </div>
+        <span class="material-symbols-outlined" (click)="toggleLock()" *ngIf="clientName === 'Organisateur'">
+            <i *ngIf="!isLocked" class="fas fa-lock-open lock-size" matTooltip="Verrouiller" matTooltipPosition="above"></i>
+            <i *ngIf="isLocked" class="fas fa-lock lock-size" matTooltip="Déverrouiller" matTooltipPosition="above"></i>
+        </span>
+    </div>
+    <div class="lobby-container-justified">
+        <p class="list-title">Joueurs :</p>
+        <div *ngFor="let playerName of playersName">
+            <div class="player" [ngClass]="{ 'current-player': playerName === clientName }">
+                {{ playerName }}
+                <div *ngIf="clientName === 'Organisateur'">
+                    <button class="kickPlayer" (click)="kickPlayer(playerName)" matTooltip="Bannir" matTooltipPosition="above">
+                        <i class="fas fa-user-times"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="countdown-overlay" *ngIf="countdownValue !== undefined"></div>
+    <div class="countdown" *ngIf="countdownValue !== undefined">
+        {{ countdownValue }}
+    </div>
+    <div class="lobby-buttons">
+        <button class="leaveGame" (click)="leaveLobby()">Quitter</button>
+        <button *ngIf="clientName === 'Organisateur'" [disabled]="gameStarted" class="startGame" (click)="startGame()">Débuter !</button>
+    </div>
+</div>

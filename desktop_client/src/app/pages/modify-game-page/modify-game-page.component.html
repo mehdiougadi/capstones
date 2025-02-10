@@ -1,0 +1,103 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<body>
+    <app-logo></app-logo>
+    <div class="container">
+        <div style="text-align: center">
+            <h1 class="create-quiz" *ngIf="isNewGame">Créer un quiz</h1>
+            <h1 class="create-quiz" *ngIf="!isNewGame">Modifier un quiz</h1>
+        </div>
+        <form [formGroup]="gameForm" (ngSubmit)="onSubmit()" class="quiz">
+            <div>
+                <div class="div-container">
+                    <label for="title" class="label-element">Titre</label>
+                    <input type="text" id="title" name="title" formControlName="title" class="input-element" />
+                    <img
+                        *ngIf="gameForm.controls.title.touched && gameForm.controls.title.errors?.required"
+                        src="assets/img/error_image.png"
+                        alt="error field"
+                        matTooltip="Le titre ne peut pas être vide"
+                        class="image-size"
+                    />
+                    <img
+                        *ngIf="gameForm.controls.title.errors?.maxlength"
+                        matTooltip="Le titre ne peut pas avoir plus de 100 caractères"
+                        src="assets/img/error_image.png"
+                        alt="error field"
+                        class="image-size"
+                    />
+                </div>
+                <div class="div-container">
+                    <label for="description" class="label-element">Description</label>
+                    <div class="textarea-container" (input)="checkLength(textarea.value.length)">
+                        <textarea id="description" #textarea name="description" formControlName="description" class="input-textarea"></textarea>
+                        <div class="counter-container">
+                            <mat-hint [ngClass]="{ red: isRed, black: !isRed }"> {{ textarea.value.length }}/300</mat-hint>
+                        </div>
+                    </div>
+                    <img
+                        *ngIf="gameForm.controls.description.touched && gameForm.controls.description.errors?.required"
+                        matTooltip="La description ne peut pas être vide"
+                        src="assets/img/error_image.png"
+                        alt="error field"
+                        class="image-size"
+                    />
+                    <img
+                        *ngIf="gameForm.controls.description.errors?.maxlength"
+                        matTooltip="La description ne peut pas avoir plus que 300 caractères"
+                        src="assets/img/error_image.png"
+                        alt="error field"
+                        class="image-size"
+                    />
+                </div>
+                <div class="div-container">
+                    <label for="duration" class="label-element">Durée par question</label>
+                    <div class="div-container-left">
+                        <input type="number" id="duration" name="duration" formControlName="duration" class="input-number" />
+                        <label for="duration" class="unit-element"> secondes</label>
+                        <img
+                            *ngIf="gameForm.controls.duration.touched && gameForm.controls.duration.errors"
+                            src="assets/img/error_image.png"
+                            alt="error field"
+                            class="image-size"
+                        />
+                        <label class="error-message" *ngIf="gameForm.controls.duration.touched && gameForm.controls.duration.errors"
+                            >La durée doit être entre 10 et 60 secondes</label
+                        >
+                    </div>
+                </div>
+                <div formArrayName="questions" class="question-list" cdkDropList (cdkDropListDropped)="dragQuestion($event)">
+                    <div *ngFor="let questionFormGroup of questions.controls; let i = index" class="div-container-question">
+                        <div class="button-remover-container">
+                            <button *ngIf="questions.length > 1" type="button" (click)="deleteQuestion(i)" class="remove-button">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                        <div class="question-header" cdkDrag>
+                            <app-create-question [questionForm]="getQuestionFormGroup(i)" (questionIndexChange)="onQuestionIndexChange($event)" [index]="i" [gameId]="gameId" (questionTypeChange)="onQuestionTypeChange($event,i)" ></app-create-question>
+                        </div>
+                        <img
+                            *ngIf="questionFormGroup.invalid && questionFormGroup.touched && !getShowDetails(i)"
+                            matTooltip="La question est invalide"
+                            src="assets/img/error_image.png"
+                            alt="error field"
+                            class="image-size"
+                        />
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button class="button-add-question" type="button" (click)="addQuestion()">+ Question</button>
+                </div>
+            </div>
+            <div class="save-quiz">
+                <button *ngIf="isNewGame; else modifyGame" type="submit" class="button">Créer le quiz</button>
+            </div>
+            <ng-template #modifyGame><button type="submit" class="button">Enregistrer les changements</button></ng-template>
+            <div class="error-message-div" *ngIf="errorMessage">
+                <label class="error-message">{{ this.errorMessage }}</label>
+                <img src="assets/img/error_image.png" alt="error field" class="image-size image-question" />
+            </div>
+        </form>
+    </div>
+</body>

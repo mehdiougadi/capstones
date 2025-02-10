@@ -1,0 +1,47 @@
+<div class="container">
+    <h1 class="header-item">
+        <a>
+            <img src="assets/img/BrainClashLogoAlt.png" alt="Logo Projet" routerLink="/home" />
+        </a>
+    </h1>
+    <div class="list-container">
+        <div class="scrollable-list" #scrollableList>
+            <div class="games-wrapper">
+                <div
+                    *ngFor="let game of games; let gameIndex = index"
+                    class="game-box"
+                    id="{{ 'game-box-' + game.id }}"
+                    [@expandCollapse]="gameState[game.id]"
+                    [ngClass]="{ collapsed: gameState[game.id] === 'collapsed', expanded: gameState[game.id] === 'expanded' }"
+                    (click)="gameState[game.id] === 'collapsed' ? toggleGameState(game.id) : null"
+                >
+                    <p class="game-title">{{ game.title }}</p>
+                    <span class="close-btn" *ngIf="gameState[game.id] === 'expanded'" (click)="closeGameBox(game.id, $event)">—</span>
+                    <div *ngIf="gameState[game.id] === 'expanded'">
+                        <p class="game-duration">Quiz duration: {{ game.duration }}</p>
+                        <p class="game-duration">Description: {{ game.description }}</p>
+                        <div class="question-list">
+                            <div
+                                *ngFor="let question of game.questions; let questionIndex = index"
+                                class="question-box"
+                                [@expandCollapse]="questionState[gameIndex + '-' + questionIndex]"
+                                (click)="toggleQuestionState(gameIndex + '-' + questionIndex)"
+                            >
+                                <p class="question-title">{{ question.text }}</p>
+                                <div *ngIf="questionState[gameIndex + '-' + questionIndex] === 'expanded'" class="choices-wrapper">
+                                    <div *ngFor="let choice of question.choices" class="choice-box">
+                                        {{ choice.text }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="option-jeu">
+                            <button class="create-btn" (click)="createRoomAndNavigate(game.id)">Créer</button>
+                            <button class="test-btn" (click)="navigateToTestGame(game.id)">Tester</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

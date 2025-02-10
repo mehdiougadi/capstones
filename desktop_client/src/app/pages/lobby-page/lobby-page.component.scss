@@ -1,0 +1,173 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.room-id {
+    position: relative;
+    background-color: #fff;
+    border-radius: 8px;
+    font-size: xx-large;
+    font-weight: bolder;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+    overflow: hidden;
+}
+
+.kickPlayer {
+    background-color: transparent;
+    color: #de3d3d;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.top-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.lockLobby {
+    height: 30px;
+}
+
+.lock-size {
+    width: 30px;
+}
+
+.lobby-container-justified {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.player {
+    position: relative;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1px;
+    overflow: hidden;
+}
+
+.current-player {
+    font-weight: bold;
+    border: 1px solid rgb(27, 31, 35);
+}
+
+.startGame {
+    appearance: none;
+    background-color: #28ac68;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    margin-top: 10px;
+    margin-left: 15px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 200px;
+    transition: background-color 0.2s;
+}
+
+.startGame:hover {
+    background-color: #207a4c;
+}
+
+.material-symbols-outlined {
+    cursor: pointer;
+    user-select: none;
+}
+
+.leaveGame {
+    appearance: none;
+    background-color: #de3d3d;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    margin-top: 10px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 200px;
+    transition: background-color 0.2s;
+}
+
+.leaveGame:hover {
+    background-color: #6c1e1e;
+}
+
+.countdown-overlay {
+    position: absolute;
+    height: 100vh;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(1.5px);
+    z-index: 1;
+}
+
+.lobby-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.countdown {
+    font-size: 150px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 150px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    transition: opacity 0.5s ease-in-out;
+}

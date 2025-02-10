@@ -1,0 +1,9 @@
+<div *ngIf="!chatOpened" class="chat-icon-section">
+    <button mat-button class="badge-button">
+        <mat-icon id="chat-badge" *ngIf="badgeCount !== 0" [matBadge]="badgeCount" matBadgeSize="small" matBadgeColor="warn" aria-hidden="false">
+            chat
+        </mat-icon>
+        <mat-icon *ngIf="badgeCount === 0"> chat </mat-icon>
+        <span class="cdk-visually-hidden"> chat icon with overlaid badge showing the number {{ badgeCount }} </span>
+    </button>
+</div>

@@ -1,0 +1,120 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    margin-block: 5%;
+    justify-content: center;
+}
+
+.play-area-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+    width: calc(100% - 350px);
+}
+
+.lobby-container-justified {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.player {
+    position: center;
+    width: 400px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1px;
+    overflow: hidden;
+}
+
+.current-player {
+    font-weight: bold;
+    border: 1px solid rgb(27, 31, 35);
+}
+
+.home {
+    background-color: #de3d3d;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+}
+
+.home:hover {
+    background-color: #6c1e1e;
+}
+
+.startGame:hover {
+    background-color: #207a4c;
+}
+
+#sidebar {
+    flex-basis: 350px;
+    min-width: 200px;
+}
+
+.player-points {
+    margin-left: 5px;
+}
+
+.results-card {
+    margin-top: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.results {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 0 10px;
+    width: 40vw;
+    min-width: 250px;
+    height: auto;
+    min-height: 250px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+.example-container {
+    height: 100%;
+}
+
+.mat-sidenav-content {
+    height: 100vh;
+    background: none;
+}
+
+.mat-drawer-content {
+    overflow-x: hidden !important;
+}
+
+.list-title {
+    font-weight: bolder;
+}

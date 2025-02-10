@@ -1,0 +1,118 @@
+<header>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</header>
+<div [formGroup]="questionForm">
+    <div *ngIf="!showDetails; else showFullDetails" class="question" (click)="toggleDetails()">
+        <h3 id="question-title-closed" class="title">{{ index + 1 }} - {{ questionForm.value.type }} : {{ this.questionForm.value.text }}</h3>
+        <i class="fas fa-chevron-up fa-rotate-180 fa-2x image-size-collapse"></i>
+    </div>
+    <ng-template #showFullDetails>
+        <div class="question" (click)="toggleDetails()">
+            <h3 id="question-title-open" class="title">Question {{ index + 1 }}</h3>
+            <i class="fas fa-chevron-up fa-2x image-size-collapse"></i>
+        </div>
+        <div class="question-elements">
+            <div class="elements-question-title">
+                <label for="question-{{ index }}">Question:</label>
+                <input type="text" id="question-{{ index }}" name="question-{{ index }}" formControlName="text" />
+                <img
+                    *ngIf="questionForm.get('text')?.errors?.required && questionForm.get('text')?.touched"
+                    matTooltip="La question ne peut pas être vide"
+                    src="assets/img/error_image.png"
+                    alt="error field"
+                    class="image-size-error"
+                />
+                <img
+                    *ngIf="questionForm.get('text')?.errors?.maxlength"
+                    matTooltip="La question doit être au maximum de 100 caractères"
+                    src="assets/img/error_image.png"
+                    alt="error field"
+                    class="image-size-error"
+                />
+            </div>
+            <div class="question-props">
+                <mat-chip-listbox class="custom-chip-listbox">
+                    <mat-chip-option
+                        class="question-type"
+                        [selected]="!isQcmSelected"
+                        [disabled]="!isQcmSelected"
+                        selectable="true"
+                        (click)="selectOption('QRL')"
+                        >QRL</mat-chip-option
+                    >
+                    <mat-chip-option
+                        class="question-type"
+                        [selected]="isQcmSelected"
+                        [disabled]="isQcmSelected"
+                        selectable="true"
+                        (click)="selectOption('QCM')"
+                        >QCM</mat-chip-option
+                    >
+                </mat-chip-listbox>
+                <label class="point-label" for="question-{{ index }}-points">Points:</label>
+                <input type="number" formControlName="points" min="10" max="100" step="10" (blur)="roundToNearestTen()" />
+            </div>
+            <div>
+                <div *ngIf="isQcmSelected">
+                    <div formArrayName="choices" class="choice-list" cdkDropList (cdkDropListDropped)="dragChoice($event)">
+                        <div *ngFor="let choiceCtrl of choices.controls; let j = index" [formGroupName]="j" class="choice">
+                            <div class="choice-container" cdkDrag>
+                                <div class="elements">
+                                    <label for="choice-{{ index }}-{{ j }}">Choix #{{ j + 1 }}</label>
+                                    <input type="text" class="choice-input" id="choice-{{ index }}-{{ j }}" formControlName="text" />
+                                </div>
+                                <div class="checkbox-wrapper-10">
+                                    <input
+                                        matTooltip="réponse correct ou fausse"
+                                        class="tgl tgl-flip"
+                                        type="checkbox"
+                                        id="choice-{{ index }}-{{ j }}-isCorrect"
+                                        formControlName="isCorrect"
+                                    />
+                                    <label class="tgl-btn" data-tg-off="faux" data-tg-on="vrai" for="choice-{{ index }}-{{ j }}-isCorrect"></label>
+                                </div>
+                                <div>
+                                    <img
+                                        *ngIf="choiceCtrl.get('text')?.errors?.required && choiceCtrl.get('text')?.touched"
+                                        matTooltip="Le choix ne peut pas être vide"
+                                        src="assets/img/error_image.png"
+                                        alt="error field"
+                                        class="image-size-error"
+                                    />
+                                    <img
+                                        *ngIf="choiceCtrl.get('text')?.errors?.maxlength"
+                                        matTooltip="Le choix doit être au maximum de 60 caractères"
+                                        src="assets/img/error_image.png"
+                                        alt="error field"
+                                        class="image-size-error"
+                                    />
+                                </div>
+                                <img class="image-size" src="assets/img/drag-image.png" alt="icon drag" />
+                            </div>
+                            <button class="remove-choice-button" type="button" *ngIf="choices.length > 2" (click)="deleteChoice(j)">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="button-container">
+                        <button type="button" *ngIf="choices.length < 4" (click)="addChoice()">+ ajouter un choix</button>
+                    </div>
+                    <div *ngIf="choices.errors?.atLeastOneTrueOrOneFalse" class="choice-error">
+                        <img src="assets/img/error_image.png" alt="error field" class="image-size-error" />
+                        <label>Il faut au moins une bonne et une mauvaise réponse.</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="save-question-button">
+            <button *ngIf="gameId" type="button" (click)="submitQuestion()">Enregistrer la question</button>
+        </div>
+        <div *ngIf="status === statusEnum.UpdateAccept" class="choice-error">
+            <label>Question enregistré avec succès!</label>
+        </div>
+        <div *ngIf="status === statusEnum.UpdateRefuse" class="choice-error">
+            <label class="error-message">{{ errorType }}</label>
+            <img src="assets/img/error_image.png" alt="error field" class="image-size-error" />
+        </div>
+    </ng-template>
+</div>

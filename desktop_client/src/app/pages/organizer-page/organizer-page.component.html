@@ -1,0 +1,91 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" opened="false" position="end">
+        <app-chat (toggleSidebar)="sidenav.toggle()"></app-chat>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="container">
+            <section class="play-area-container">
+                <div class="organizer-page">
+                    <div class="content-left">
+                        <div class="question">
+                            <h2>Question: {{ currentQuestion.text }}</h2>
+                        </div>
+                        <p>Points pour cette question : {{ currentQuestion.points }}</p>
+                        <section id="button-container" class="button-section">
+                            <app-timer [time]="time" [questionState]="questionState" [currentQuestionType]="currentQuestion.type"></app-timer>
+                            <button
+                                *ngIf="questionState === questionStateEnum.Submitted && !isLastQuestion"
+                                class="submit-btn"
+                                (click)="nextQuestion()"
+                            >
+                                Prochaine Question
+                            </button>
+                            <button
+                                *ngIf="isLastQuestion && !time && questionState === questionStateEnum.Submitted"
+                                class="submit-btn"
+                                (click)="endGame()"
+                            >
+                                Présenter les résultats
+                            </button>
+                        </section>
+                        <mat-divider *ngIf="currentQuestion.type === 'QRL' && questionState === questionStateEnum.Evaluating"></mat-divider>
+                        <app-qrl-form [currentQuestionType]="currentQuestion.type" [evaluating]="questionState === questionStateEnum.Evaluating">
+                        </app-qrl-form>
+
+                        <mat-divider></mat-divider>
+                        <h2>Statistiques</h2>
+                        <app-histogram [choices]="histogramChoices"></app-histogram>
+                        <mat-divider></mat-divider>
+                    </div>
+                    <div class="player-list">
+                        <h2>Liste des joueurs</h2>
+                        <div class="sort-buttons-container">
+                            <button mat-button class="sort-button" (click)="toggleSortSelection('name')" [class.selected]="orderBy === 'name'">
+                                Nom <span *ngIf="orderBy === 'name'" [class]="arrowClass">&#8593;</span>
+                            </button>
+                            <button mat-button class="sort-button" (click)="toggleSortSelection('points')" [class.selected]="orderBy === 'points'">
+                                Points <span *ngIf="orderBy === 'points'" [class]="arrowClass">&#8593;</span>
+                            </button>
+                            <button mat-button class="sort-button" (click)="toggleSortSelection('state')" [class.selected]="orderBy === 'state'">
+                                État <span *ngIf="orderBy === 'state'" [class]="arrowClass">&#8593;</span>
+                            </button>
+                        </div>
+                        <div class="player-scores-container">
+                            <span class="player-header">Joueurs</span>
+                            <span class="player-header">Points</span>
+                            <span class="player-header">Bloquer le clavardage</span>
+                        </div>
+                        <div
+                            class="player-scores-container"
+                            *ngFor="let player of players"
+                            [ngClass]="{
+                                abandoned: player.state === 'abandoned',
+                                noInteraction: player.state === 'noInteraction',
+                                firstInteraction: player.state === 'firstInteraction',
+                                confirmation: player.state === 'confirmation'
+                            }"
+                        >
+                            <div class="player-info">
+                                <b class="player-name">{{ player.name }}</b>
+                            </div>
+
+                            <div class="player-info">{{ player.points }}</div>
+                            <div class="ban-toggle">
+                                <mat-slide-toggle
+                                    #ban
+                                    color="warn"
+                                    [checked]="!player.canChat"
+                                    (change)="toggleChatPermission(player)"
+                                    [disabled]="player.state === 'abandoned'"
+                                ></mat-slide-toggle>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button (click)="quitGame()" class="abandon-button">Quitter</button>
+                <app-chat-badge [chatOpened]="sidenav.opened" (click)="sidenav.toggle()"></app-chat-badge>
+            </section>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

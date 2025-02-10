@@ -1,0 +1,16 @@
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.mat-mdc-paginator {
+    background-color: rgba(0, 0, 0, 0);
+}
