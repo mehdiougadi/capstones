@@ -3,8 +3,6 @@
 
 PolyQuiz is a comprehensive full-stack application designed to enhance learning through interactive quizzes. With real-time multiplayer functionality and dynamic leaderboards, PolyQuiz creates an engaging educational environment that makes learning fun and competitive.
 
-![](./img/visual_polyquiz.png)
-
 ## 🚀 Features
 ✅ **Real-Time Multiplayer** – Compete with other students in live quiz sessions  
 ✅ **Dynamic Leaderboards** – Track progress and rankings across different topics  
