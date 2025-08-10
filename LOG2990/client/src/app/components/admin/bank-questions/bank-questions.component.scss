@@ -1,0 +1,28 @@
+@import '../../../common-client/constant/constant.scss';
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bank.quiz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    overflow-y: auto;
+    background-color: transparent;
+    height: $bank-height;
+    padding: $bank-padding;
+    border-radius: $bank-border-radius;
+}
+
+.options.container {
+    display: flex;
+    width: fit-content;
+}
+
+.options label {
+    color: white;
+}

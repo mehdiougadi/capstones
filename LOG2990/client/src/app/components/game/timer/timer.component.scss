@@ -1,0 +1,43 @@
+@import '../../../common-client/constant/constant.scss';
+
+.timer.container {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer {
+    background: rgb(166, 61, 11);
+    background: radial-gradient(circle at top right, rgba(255, 175, 189, 1) 10%, rgba(175, 66, 107, 1) 35%, rgba(102, 45, 145, 1) 70%, #eda242 100%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    border-radius: 100em;
+    font-size: $timer-font-size;
+    height: $timer-height;
+    width: $timer-width;
+    border-color: #141726;
+}
+
+.loading-bar {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-95%);
+    width: 20%;
+    height: 10px;
+    background-color: #141726;
+    border-radius: 2px;
+}
+
+.loading-progress {
+    height: 100%;
+    background: rgb(237, 162, 66);
+    background: linear-gradient(198deg, rgba(237, 162, 66, 1) 3%, rgba(214, 35, 217, 1) 96%);
+    width: 0;
+    border-radius: 2px;
+    transition: width 0.5s ease;
+}

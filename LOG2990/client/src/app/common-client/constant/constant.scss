@@ -1,0 +1,203 @@
+//constant.scss
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+/*GENERAL SECTION*/
+// Colors
+$primary-color: #001f3f;
+$secondary-color: #d3d3d3;
+$accent-color: #fffb10;
+$quiz-in-list: #ff7e26;
+$question-qcm-tag: #57971b;
+$question-qrl-tag: #5ea0ec;
+$give-up-color: #d40d06;
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+$body-font: 'Amatic SC', cursive;
+$button-font: 'Montserrat', sans-serif;
+
+// Sizes
+$base-font-size: 25px;
+$warning-font-size: 20px;
+
+// Base element
+$base-gap: 20px;
+$grid-template-general: repeat(2, 1fr);
+$base-border-radius: 20px;
+$base-margin: 10px;
+$base-padding: 10px;
+$base-button-width: 200px;
+
+// Breakpoints
+$mobile-breakpoint: 768px;
+$tablet-breakpoint: 1024px;
+$desktop-breakpoint: 1200px;
+
+/*HEADER SECTION*/
+$header-gap: 20px;
+$header-font-size: 35px;
+$header-margin-top: 50px;
+$logo-home-size: 75px;
+$logo-size: 75px;
+
+/*DIALOG MESSAGES*/
+$dialog-font-size: 30px;
+
+/*HOME PAGE*/
+//home page
+$home-page-height: 100vh;
+$home-option-button-padding: 15px 10px;
+$home-option-button-border-radius: 20px;
+$home-option-button-font-size: 20px;
+$home-option-container-gap: 20px;
+$home-admin-button-font-size: 12px;
+$home-admin-button-margin: 15px;
+$home-admin-button-padding: 15px;
+
+//LOGIN DIALOG
+$login-width: 500px;
+$login-title-margin: 20px 0px;
+$login-title-padding: 0px;
+$login-title-font-size: 30px;
+$login-button-width: 100px;
+
+/*CREATE GAME PAGE*/
+$create-page-content-width: 70vw;
+$create-page-content-height: 40vh;
+$game-in-games-margin-top: 10px;
+$game-in-games-width: 300px;
+$game-in-games-padding: 10px;
+$game-in-games-border-radius: 10px;
+$create-play-button-padding: 10px;
+$create-play-button-margin: 20px 0;
+$create-play-button-font-size: 20px;
+$create-game-info-title-font-size: 60px;
+
+/*ADMIN PAGE*/
+//Admin page
+$admin-option-container-gap: 20px;
+$admin-option-button-padding: 15px 10px;
+$admin-option-button-font-size: 20px;
+$admin-option-button-border-radius: 20px;
+$admin-state-button-font-size: 15px;
+$admin-state-button-padding: 20px;
+
+/* OPTIONS 1: CREATION DE QUIZ */
+$create-quiz-container-width: fit-content;
+$create-quiz-container-height: 500px;
+$create-quiz-input-width: 200px;
+$create-quiz-title-font-size: 30px;
+$create-quiz-container-margin-left: 10px;
+$question-added-create-max-width: 300px;
+$question-added-create-max-height: 30px;
+$question-display-container-width: 500px;
+
+$question-in-quiz-width: 400px;
+$quiz-state-button-font-size: 12px;
+$list-quiz-container-width: 250px;
+
+/* OPTIONS 3: BANQUE DE QUESTION */
+//banque de quiz
+$bank-title-page-font-size: 40px;
+$bank-height: 500px;
+$bank-padding: 0px 20px;
+$bank-border-radius: 0.5rem;
+
+//question displayed
+$question-container-width: 35vw;
+$question-container-margin: 10px 0px;
+$question-container-padding: 10px;
+$question-container-border-radius: 1rem;
+$question-text-container-gap: 10px;
+
+//modal question displayed
+$modal-question-display-margin: 20px;
+$modal-question-display-padding: 20px;
+$modal-question-display-width: 500px;
+$modal-question-display-border-radius: 10px;
+$modal-question-display-box-shadow: 0 2px 4px $secondary-color;
+$modal-question-display-button-margin-top: 10px;
+$modal-question-display-text-h2: 40px;
+$modal-question-display-text-h3: 30px;
+$modal-question-display-text-input: 20px;
+$modal-question-display-text-input-width: 200px;
+
+//confirm-modal component
+
+$confirm-modal-text-p: 21px;
+
+/*GAME PAGE*/
+$game-color: #89cff0;
+
+//sidebars
+$game-page-chat-container-height: 60vh;
+$game-page-chat-container-padding: 10px 0;
+$game-page-chat-container-margin: 20px 5px;
+$game-page-chat-container-width: 300px;
+$game-page-chat-title-font-size: 40px;
+$game-page-chat-message-padding: 5px;
+$game-page-chat-message-margin: 5px;
+$game-page-chat-message-border-radius: 5px;
+$game-page-leaderboard-margin: 10px;
+$game-page-leaderboard-height: 40vh;
+$game-page-leaderboard-width: 200px;
+$game-page-leaderboard-title-margin-bottom: 10px;
+$game-page-leaderboard-player-margin-bottom: 5px;
+$game-page-leaderboard-title-font-size: 30px;
+$game-page-leaderboard-player-font-size: 20px;
+$game-page-sidebar-margin-left: 25px;
+//timer
+$timer-width: 150px;
+$timer-height: 150px;
+$timer-border-radius: 50%;
+$timer-position-top: 75px;
+$timer-position-left: 50%;
+$timer-font-size: 70px;
+$timer-border: 3px solid white;
+
+//Question component
+$selected-option-color: #02498f;
+$option-button-width: 300px;
+$option-button-padding: 10px;
+$option-button-border: 1px solid black;
+$question-font-size: 40px;
+$option-button-width: 300px;
+$option-container-gap: 10px;
+
+// Results view
+$gap: 10px;
+$margin-height: 500px;
+$min-height: 150px;
+$margin-table: 20px;
+$width-box-result: 100%;
+$result-zero: 0;
+$result-max: 4px black;
+$result-medium: 2px;
+$result-min: 1px;
+$result-box-color: gba(0, 0, 0, 0.1);
+$flex-size: 33%;
+$result-list-width: 50%;
+$result-list-width-px: 5px;
+// histogram
+$container-half-width: 50%;
+$container-full-width: 100%;
+$margin-top-histogram: 20px;
+$scroll-bar-size: 400px;
+$bar-graph-height: 150px;
+$bar-graph-width: 30px;
+$question-container: 20px;
+$count-bottom: 5px;
+$count-font-size: 40px;
+$bar-margin: 10px;
+$fill-bar: 0;
+$bar-graph-border: 1px;
+$padding-tab: 10px;
+$legend-color-width: 20px;
+$legend-color-height: 20px;
+$legend-label-margin: 5px;
+$buttons-container-margin: 10px;
+$no-results-message-p-font: 16px;
+$no-results-message-p-margin: 16px;
+

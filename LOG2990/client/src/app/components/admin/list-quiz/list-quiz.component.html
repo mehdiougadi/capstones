@@ -1,0 +1,29 @@
+<section>
+    <h1>Liste des quiz</h1>
+    <div class="quiz-list">
+        <div class="quizzes">
+            <div
+                class="quiz container"
+                (click)="setCurrentQuiz(quiz)"
+                *ngFor="let quiz of this['quizManagerService'].quizList"
+                [class.selected]="quiz._id === this['quizManagerService'].currentQuiz._id"
+            >
+                <div class="main quiz info">
+                    <p class="quiz-title">{{ quiz.title }}</p>
+                    <div class="options holder">
+                        <i
+                            class="fas"
+                            [ngClass]="{ 'fa-eye': quiz.visible, 'fa-eye-slash': !quiz.visible }"
+                            (click)="toggleVisibilityQuiz($event, quiz)"
+                        ></i>
+                        <i class="fas fa-trash-alt" (click)="deleteQuiz($event, quiz)"></i>
+                    </div>
+                </div>
+                <div class="quiz date info">
+                    <p class="date">Derniere modification:</p>
+                    <p class="date">{{ quiz.lastModification | date: 'yyyy-MM-dd' }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

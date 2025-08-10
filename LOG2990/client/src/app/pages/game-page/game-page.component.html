@@ -1,0 +1,54 @@
+<div class="wholePage">
+    <div class="content holder">
+        <app-header class="header" [currentState]="header"></app-header>
+        <div class="game holder" *ngIf="finishedLoading">
+            <div [ngSwitch]="gameFinished">
+                <ng-container *ngSwitchCase="false">
+                    <div class="game container">
+                        <div class="timer-points-wrapper">
+                            <div class="timer-and-points-container">
+                                <div class="player-info">Joueur Actuel : {{ inputQuestion.currentPlayer.name }}</div>
+                                <app-timer [room]="inputQuestion.room"></app-timer>
+                                <div class="points-info">Nombre de points : {{ inputQuestion.currentPlayer.points }}</div>
+                            </div>
+                        </div>
+                        <div class="actions container">
+                            <div class="question-info-container">
+                                <div class="question-content">
+                                    <h2 class="question-title">{{ inputQuestion.question.text }} ({{ inputQuestion.question.points }} pts)</h2>
+                                </div>
+                                <app-question class="question displayed" [inputQuestion]="this.inputQuestion"> </app-question>
+                            </div>
+                            <div class="button-container">
+                                <app-give-up-button
+                                    class="button"
+                                    [isTestingQuiz]="this.inputQuestion.room.isTesting"
+                                    [roomId]="roomId"
+                                ></app-give-up-button>
+                                <button class="buttonConfirm" (click)="mouseHitDetect($event)" *ngIf="!inputQuestion.room.roundFinished">
+                                    Confirmer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="showPopup" class="popup">
+                        <div class="popup-content">
+                            {{ popupMessage }}
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-container *ngSwitchCase="true">
+                    <div class="result player">
+                        <app-results-view *ngIf="gameFinished" [roomId]="inputQuestion.room.id"></app-results-view>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+    <div class="chat container">
+        <app-sidebar [currentPlayer]="inputQuestion.currentPlayer"></app-sidebar>
+    </div>
+</div>
+<audio id="audioPlayer">
+    <source src="./assets/sounds/alien_danger.wav" type="audio/mpeg" />
+</audio>

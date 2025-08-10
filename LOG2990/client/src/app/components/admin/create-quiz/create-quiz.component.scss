@@ -1,0 +1,183 @@
+@import '../../../common-client/constant/constant.scss';
+
+h1 {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+.create-quiz.holder {
+    display: flex;
+    flex-direction: column;
+    gap: $base-gap;
+}
+
+section {
+    display: flex;
+    align-items: flex-end;
+    height: fit-content;
+    gap: $base-gap;
+}
+
+.create-quiz.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    overflow-y: auto;
+    padding: $base-padding;
+    border-radius: $base-border-radius;
+    overflow-x: hidden;
+    height: 500px;
+    margin: 0;
+}
+
+.inputs.container {
+    display: flex;
+    flex-direction: column;
+    gap: $base-gap;
+    width: fit-content;
+}
+
+.input.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: NONE;
+    gap: $base-gap;
+}
+
+.input.container input {
+    flex-grow: 1;
+}
+
+.button.holder {
+    display: flex;
+    justify-content: center;
+    gap: $base-gap;
+}
+
+.state.button {
+    background-color: white;
+    color: black;
+    width: fit-content;
+    padding: $admin-state-button-font-size;
+    font-size: $admin-state-button-padding;
+    border-radius: $question-container-border-radius;
+}
+
+.state.button:hover {
+    color: rgb(124, 80, 80);
+    background-color: $accent-color;
+}
+
+.add.question.holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $base-gap;
+    margin: $base-margin;
+    border-bottom: 2px solid black;
+}
+
+.bank-questions.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    height: 500px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $primary-color;
+}
+
+.question-quiz {
+    background-color: $secondary-color;
+    margin: $base-margin;
+    padding: $base-padding;
+    border-radius: $base-border-radius;
+}
+
+.bank.box {
+    height: 480px;
+    padding: $base-padding;
+    overflow-y: scroll;
+}
+
+.bank.box::-webkit-scrollbar-thumb {
+    background-color: $accent-color;
+}
+
+.title.container {
+    display: flex;
+    align-items: center;
+    gap: $base-gap;
+}
+.title.container i {
+    cursor: pointer;
+    color: #ff9792;
+}
+
+p.question-in-quiz {
+    width: 350px;
+    border: 1px solid;
+    padding: 2px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.empty.quiz.list.holder {
+    background-color: rgb(205, 205, 205);
+    border-radius: $base-border-radius;
+    border: 3px dashed black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.empty.quiz.list.holder p {
+    color: white;
+    width: fit-content;
+}
+
+.question-in-quiz.container {
+    display: flex;
+    color: white;
+    border: 1px solid black;
+    padding: $base-padding;
+    cursor: pointer;
+    align-items: center;
+}
+
+.qcm-class {
+    background-color: $question-qcm-tag;
+}
+
+.qrl-class {
+    background-color: $question-qrl-tag;
+}
+
+.question-in-quiz.container:hover {
+    color: black;
+}
+
+.question-in-quiz.container i {
+    margin-right: 10px;
+}
+
+.question-in-quiz.container p.type.info {
+    margin-left: auto;
+}
+
+.question-in-quiz.container p.title.info {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}

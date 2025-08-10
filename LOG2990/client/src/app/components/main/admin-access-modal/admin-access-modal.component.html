@@ -1,0 +1,13 @@
+<div class="dialog">
+    <h2 mat-dialog-title>Connexion</h2>
+    <mat-dialog-content>
+        <mat-form-field>
+            <mat-label>Mot de passe</mat-label>
+            <input matInput [(ngModel)]="password" type="password" (keydown.enter)="sendPasswordToServer()" placeholder="Entrer votre mot de passe" />
+        </mat-form-field>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button mat-button mat-dialog-close>Annuler</button>
+        <button mat-button [mat-dialog-close]="password" (click)="sendPasswordToServer()">Entrer</button>
+    </mat-dialog-actions>
+</div>

@@ -1,0 +1,11 @@
+<section>
+    <div class="players container">
+        <div *ngIf="currentRoom">
+            <div class="player info" *ngFor="let player of currentRoom.listPlayers">
+                <i class="fas fa-user"></i>
+                <p>{{ player.name }}</p>
+                <i *ngIf="adminEditor" (click)="banPlayer(player)" class="fas fa-ban"></i>
+            </div>
+        </div>
+    </div>
+</section>

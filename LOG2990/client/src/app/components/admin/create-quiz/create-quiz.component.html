@@ -1,0 +1,71 @@
+<div class="create-quiz holder">
+    <section>
+        <div class="create-quiz container">
+            <div class="title container">
+                <h1>Formulaire de Questionnaire</h1>
+                <i class="fas fa-eraser" title="Effacer le Questionnaire" (click)="this['quizManagerService'].clearCurrentQuiz()"></i>
+            </div>
+            <div class="inputs container">
+                <div class="input container">
+                    <p>Nom du Questionnaire:</p>
+                    <input [(ngModel)]="this['quizManagerService'].currentQuiz.title" required />
+                </div>
+                <div class="input container">
+                    <p>Description:</p>
+                    <input [(ngModel)]="this['quizManagerService'].currentQuiz.description" />
+                </div>
+                <div class="input container">
+                    <label>Temps par Question</label>
+                    <input
+                        id="quizTime"
+                        [(ngModel)]="this['quizManagerService'].currentQuiz.duration"
+                        required
+                        [step]="1"
+                        min="10"
+                        max="60"
+                        type="number"
+                    />
+                </div>
+            </div>
+            <div class="questions container">
+                <div class="add question holder">
+                    <p class="question quiz section">Questions présentes dans le Questionnaire</p>
+                    <i class="fas fa-plus" (click)="createQuestionInQuiz()"></i>
+                </div>
+                <div class="questions quiz holder" cdkDropList (cdkDropListDropped)="orderQuestionInList($event)">
+                    <div
+                        class="question-in-quiz container"
+                        (click)="openQuestionInQuiz(question)"
+                        *ngFor="let question of this['quizManagerService'].currentQuiz.questions; let i = index"
+                        cdkDrag
+                        [ngClass]="{
+                            'qcm-class': question.type === questionType.QCM,
+                            'qrl-class': question.type === questionType.QRL
+                        }"
+                    >
+                        <i class="fas fa-bars drag-icon"></i>
+                        <p class="points info">{{ i + 1 }}. ({{ question.points }} Pts)</p>
+                        <p class="title info">{{ question.text }}</p>
+                        <p class="type info">#{{ question.type }}</p>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="this['quizManagerService'].currentQuiz.questions.length === 0" class="empty quiz list holder">
+                <p>Glisser les questions ici!</p>
+            </div>
+        </div>
+        <div class="bank-questions container">
+            <h1>Questions existantes dans la banque de question</h1>
+            <div
+                class="bank box"
+                cdkDropList
+                (cdkDropListDropped)="onQuizQuestionDrop($event)"
+                [cdkDropListData]="this['bankQuestionService'].bankQuestionList"
+            >
+                <div *ngFor="let question of this['bankQuestionService'].bankQuestionList" cdkDrag [cdkDragData]="question">
+                    <app-question-in-bank [question]="question" [displayDate]="false"></app-question-in-bank>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

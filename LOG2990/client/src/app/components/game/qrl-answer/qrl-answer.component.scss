@@ -1,0 +1,80 @@
+.qrl-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid black; 
+}
+
+.qrl-table th,
+.qrl-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.qrl-table th {
+    background-color: lightgray; 
+}
+
+.qrl-table td {
+    background-color: white; 
+    height: 200px;
+}
+
+.qrl-table th:nth-child(1),
+.qrl-table td:nth-child(1) {
+    width: 25%; 
+}
+
+.qrl-table th:nth-child(2),
+.qrl-table td:nth-child(2) {
+    width: 65%;
+}
+
+.qrl-table th:nth-child(3),
+.qrl-table td:nth-child(3) {
+    width: 5%; 
+}
+
+.qrl-table th:nth-child(4),
+.qrl-table td:nth-child(4) {
+    width: 5%;
+}
+
+.qrl-table input[type="number"] {
+    width: 38px;
+}
+
+
+.name {
+    width: 90px;
+    height: fit-content;
+    white-space: normal;
+    overflow-wrap: break-word;
+    display: inline-block;
+    text-overflow: initial;
+    margin: 0 auto;
+}
+.writer {
+    width: 350px;
+    height: fit-content;
+    white-space: normal;
+    overflow-wrap: break-word;
+    display: inline-block;
+    text-overflow: initial;
+    margin: 0 auto;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-button {
+    margin-right: auto;
+}
+
+.right-button {
+    margin-left: auto;
+}
+

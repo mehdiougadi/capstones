@@ -1,0 +1,26 @@
+<section>
+    <table class="qrl-table">
+        <thead>
+            <tr>
+                <th>Joueur</th>
+                <th>Réponse</th>
+                <th>Note</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><div class="name">{{ sortedPlayers[currentIndex].name }}</div></td>
+                <td><div class="writer">{{ sortedPlayers[currentIndex].qrlAnswer }}</div></td>
+                <td><input type="number" min="0" max="1" step="0.5" required [(ngModel)]="sortedPlayers[currentIndex].pointFactor"></td>
+                <td>{{ scoresTable[currentIndex] }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="button-container">
+        <button [disabled]="!(currentIndex + 1 > 1)" class="left-button" (click)="currentIndex = (currentIndex - 1)">Precedent</button>
+        <button [disabled]="isDisabled || !(currentIndex + 1 === sortedPlayers.length)" class="center-button" (click)="confirmAnswers()"> Confirmer les notes </button>
+        <button [disabled]="!(currentIndex + 1 < sortedPlayers.length)" class="right-button" 
+                (click)="currentIndex = (currentIndex + 1)">Suivant</button>
+    </div>
+</section>

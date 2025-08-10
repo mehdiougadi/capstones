@@ -1,0 +1,11 @@
+<section class="home container">
+    <app-header [currentState]="currentStateHeader"></app-header>
+    <div class="button container">
+        <button (click)="showModalAccessGame()">Joindre une partie</button>
+        <button routerLink="/create-game">Créer une partie</button>
+    </div>
+    <div class="button container">
+        <button class="settings" (click)="showModalLogin()"><i class="fas fa-cog"></i> Administrer les jeux</button>
+    </div>
+    <app-footer></app-footer>
+</section>

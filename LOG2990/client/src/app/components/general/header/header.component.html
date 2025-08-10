@@ -1,0 +1,50 @@
+<div [ngSwitch]="currentState">
+    <div *ngSwitchCase="pageState.HOME">
+        <div class="home header">
+            <a href="#/home">
+                <img src="./assets/img/logo.png" alt="logo" />
+            </a>
+            <h1>Bienvenue à PolyHoot!</h1>
+        </div>
+    </div>
+    <div *ngSwitchCase="pageState.ADMIN">
+        <div class="admin header">
+            <a href="#/home" (click)="deleteSessionStorage()">
+                <img src="./assets/img/logo.png" alt="logo" />
+            </a>
+            <h1>Page d'administration</h1>
+        </div>
+    </div>
+    <div *ngSwitchCase="pageState.PlayerWait">
+        <div class="wait player header">
+            <a href="#/home">
+                <img src="./assets/img/logo.png" alt="logo" />
+            </a>
+            <h1>Salle d'attente des joueurs</h1>
+        </div>
+    </div>
+    <div *ngSwitchCase="pageState.CREATE">
+        <div class="create header">
+            <a href="#/home">
+                <img src="./assets/img/logo.png" alt="logo" />
+            </a>
+            <h1>Création d'une partie</h1>
+        </div>
+    </div>
+    <div *ngSwitchCase="pageState.HostWait">
+        <div class="wait host header">
+            <a href="#/home">
+                <img src="./assets/img/logo.png" alt="logo" />
+            </a>
+            <h1>Salle de jeu en attente</h1>
+        </div>
+    </div>
+    <div *ngSwitchCase="pageState.GAME">
+        <div class="game header">
+            <a href="#/home">
+                <img src="./assets/img/logo.png" alt="logo" />
+            </a>
+            <h1>PolyHoot!</h1>
+        </div>
+    </div>
+</div>

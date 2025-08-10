@@ -1,0 +1,58 @@
+@import '../../../common-client/constant/constant.scss';
+
+.content.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    width: fit-content;
+    height: fit-content;
+}
+
+.title {
+    font-size: $game-page-chat-title-font-size;
+    border-bottom: 2px solid white;
+    padding: 0%;
+    margin: 5px;
+}
+
+.chat-container {
+    background-color: white;
+    border-radius: $base-border-radius;
+    height: 400px;
+    width: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    padding: $game-page-chat-message-margin;
+}
+
+.red-message {
+    color: red;
+}
+
+.message {
+    color: black;
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+    background: $accent-color;
+}
+
+.message.input input {
+    color: white;
+    background: transparent;
+    padding: $game-page-chat-message-padding;
+}
+
+.message.input button {
+    color: white;
+    background-color: $primary-color;
+    padding: $game-page-chat-message-padding;
+    border-radius: $bank-border-radius;
+}
+
+.message.input button:hover:not(:disabled) {
+    background-color: white;
+    color: black;
+}

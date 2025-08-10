@@ -1,0 +1,64 @@
+@import '../../common-client/constant/constant.scss';
+
+.admin.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: $home-page-height;
+}
+
+.content.container div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $admin-option-container-gap;
+}
+
+.button.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $admin-option-container-gap;
+}
+
+.button.container button {
+    width: 100%;
+    padding: $admin-option-button-padding;
+    font-size: $admin-option-button-font-size;
+    border-radius: $admin-option-button-border-radius;
+}
+
+.button.container button:not([disabled]):hover {
+    background-color: $accent-color;
+}
+
+.content.container div.option.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.state.button,
+label {
+    background-color: white;
+    color: black;
+    width: fit-content;
+    padding: $admin-state-button-font-size;
+    font-size: $admin-state-button-padding;
+    border-radius: $question-container-border-radius;
+}
+
+.state.button:not([disabled]):hover {
+    color: black;
+    background-color: $accent-color;
+}
+
+.edit.content,
+.default.content {
+    display: flex;
+    gap: $base-gap;
+    align-items: center;
+}
+
+button:disabled {
+    opacity: 0.5;
+}

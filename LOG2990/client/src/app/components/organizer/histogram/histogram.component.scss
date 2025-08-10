@@ -1,0 +1,120 @@
+@import '../../../common-client/constant/constant.scss';
+
+.histogram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+}
+
+.question-container {
+    border-radius: $base-border-radius;
+    border: 2px solid black;
+    background-color: white;
+    padding: $base-padding;
+    margin: $base-margin;
+}
+
+.bar-container {
+    display: flex;
+    justify-content: center;
+}
+span {
+    font-size: $bar-graph-width;
+    color: black;
+}
+.bar {
+    margin-right: $bar-margin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.choice {
+    margin-top: $count-bottom;
+}
+
+.bar-graph {
+    width: $bar-graph-width;
+    background-color: transparent;
+    border: $bar-graph-border solid #000000;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: $bar-graph-height;
+}
+
+.fill {
+    position: absolute;
+    bottom: $fill-bar;
+    width: $container-full-width;
+    height: var(--bar-height);
+   animation: animateBarLoad 1s ease-out forwards;
+}
+
+.fill-qrl {
+    position: absolute;
+    bottom: $fill-bar;
+    width: $container-full-width;
+    height: var(--bar-qrl);
+}
+
+
+.flex-container {
+    display: flex;
+    align-items: center;
+}
+
+
+@keyframes animateBarLoad {
+    from {
+        height: 0;
+    }
+    to {
+        height: var(--bar-height);
+    }
+}
+
+.count {
+    position: absolute;
+    bottom: $count-bottom;
+    font-size: $count-font-size;
+    color: #fff;
+    text-align: center;
+    width: $container-full-width;
+}
+
+.legend {
+    display: flex;
+    margin-top: $buttons-container-margin;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-right: $legend-color-width;
+}
+
+.legend-color {
+    width: $legend-color-width;
+    height: $legend-color-height;
+    margin-right: $legend-label-margin;
+}
+
+.legend-label {
+    color: black;
+}
+
+.buttons-container {
+    display: flex;
+    margin-top: $buttons-container-margin;
+}
+
+.buttons-container button:first-child {
+    margin-right: $buttons-container-margin;
+}
+
+.buttons-container button:last-child {
+    margin-left: $buttons-container-margin;
+}

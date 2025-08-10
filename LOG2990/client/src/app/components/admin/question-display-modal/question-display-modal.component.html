@@ -1,0 +1,124 @@
+<div class="modal container">
+    <ng-container [ngSwitch]="currentState">
+        <ng-container *ngSwitchCase="modalState.DISPLAY">
+            <div class="info container">
+                <p>Question:</p>
+                <input [value]="currentQuestion.text" disabled />
+            </div>
+            <div class="info container">
+                <p>Type:</p>
+                <input [value]="currentQuestion.type" disabled />
+            </div>
+            <div class="info container">
+                <p>Nombre de points:</p>
+                <input type="number" [value]="currentQuestion.points" disabled />
+            </div>
+            <div *ngIf="currentQuestion.type === questionType.QCM">
+                <div class="display state container">
+                    <p>Choix Multiples:</p>
+                    <div class="choice container" *ngFor="let option of currentQuestion.choices; let i = index">
+                        <i class="fas fa-bars drag-icon"></i>
+                        <label>{{ 'Choix ' + (i + 1) }}</label>
+                        <input type="text" [value]="option.text" disabled />
+                        <input type="checkbox" [checked]="option.isCorrect" disabled />
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="currentQuestion.type === questionType.QRL"></div>
+            <mat-dialog-actions>
+                <button mat-button [mat-dialog-close]="'close'">Fermer</button>
+                <button mat-button (click)="changeCurrentState()">Éditer</button>
+                <button mat-button (click)="deleteQuestion()">Supprimer</button>
+            </mat-dialog-actions>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="modalState.NEW">
+            <div class="info container">
+                <p>Question:</p>
+                <input [(ngModel)]="currentQuestion.text" required />
+            </div>
+            <div class="info container">
+                <p>Type:</p>
+                <select [(ngModel)]="currentQuestion.type" required>
+                    <option value="QCM">Choix multiple (QCM)</option>
+                    <option value="QRL">Réponse Longue (QRL)</option>
+                </select>
+            </div>
+            <div class="info container">
+                <p>Nombre de points:</p>
+                <input type="number" [(ngModel)]="currentQuestion.points" name="points" required [step]="10" min="10" max="100" />
+            </div>
+            <div class="info container" *ngIf="currentContext === modalContext.QUIZ">
+                <label>Ajouter à la base de données:</label>
+                <input type="checkbox" [(ngModel)]="isAddedToDB" />
+            </div>
+            <div
+                class="new state container"
+                *ngIf="currentQuestion.type === questionType.QCM"
+                cdkDropList
+                (cdkDropListDropped)="reOrderQcmAnswers($event)"
+            >
+                <p>Choix Multiples:</p>
+                <div class="choice container" *ngFor="let option of currentQuestion.choices; let i = index" cdkDrag>
+                    <i class="fas fa-bars drag-icon"></i>
+                    <label>{{ 'Choix ' + (i + 1) }}</label>
+                    <input type="text" [id]="'option' + (i + 1)" [name]="'option' + (i + 1)" [(ngModel)]="option.text" required />
+                    <input type="checkbox" [(ngModel)]="option.isCorrect" [title]="'Sélectionner les bonnes réponses'" />
+                    <i class="fas fa-times" (click)="decrementMultipleChoice(i)"></i>
+                </div>
+                <button class="button" type="button" *ngIf="currentQuestion.choices.length < 4" (click)="incrementMultipleChoice()">
+                    Ajouter Un Choix
+                </button>
+            </div>
+            <mat-dialog-actions>
+                <button mat-button [mat-dialog-close]="'close'">Fermer</button>
+                <button *ngIf="currentQuestion.choices.length > 1 || currentQuestion.type === questionType.QRL" mat-button (click)="createQuestion()">
+                    Sauvegarder
+                </button>
+            </mat-dialog-actions>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="modalState.EDIT">
+            <div class="info container">
+                <p>Question:</p>
+                <input [(ngModel)]="currentQuestion.text" required />
+            </div>
+            <div class="info container">
+                <p>Type:</p>
+                <select [(ngModel)]="currentQuestion.type" required>
+                    <option value="QCM">Choix multiple (QCM)</option>
+                    <option value="QRL">Réponse Longue (QRL)</option>
+                </select>
+            </div>
+            <div class="info container">
+                <p>Nombre de points:</p>
+                <input type="number" [(ngModel)]="currentQuestion.points" name="points" required [step]="10" min="0" />
+            </div>
+            <div class="info container" *ngIf="currentContext === modalContext.QUIZ">
+                <label>Ajouter à la base de données:</label>
+                <input type="checkbox" [(ngModel)]="isAddedToDB" />
+            </div>
+            <div *ngIf="currentQuestion.type === questionType.QCM">
+                <div class="new state container" cdkDropList (cdkDropListDropped)="reOrderQcmAnswers($event)">
+                    <p>Modifier les Choix Multiples:</p>
+                    <div class="choice container" *ngFor="let option of currentQuestion.choices; let i = index" cdkDrag>
+                        <i class="fas fa-bars drag-icon"></i>
+                        <label>{{ 'Choix ' + (i + 1) }}</label>
+                        <input type="text" [id]="'option' + (i + 1)" [name]="'option' + (i + 1)" [(ngModel)]="option.text" required />
+                        <input type="checkbox" [(ngModel)]="option.isCorrect" [title]="'Sélectionner les bonnes réponses'" />
+                        <i class="fas fa-times" (click)="decrementMultipleChoice(i)"></i>
+                    </div>
+                    <button class="button" type="button" *ngIf="currentQuestion.choices.length < 4" (click)="incrementMultipleChoice()">
+                        Ajouter Un Choix
+                    </button>
+                </div>
+            </div>
+            <mat-dialog-actions>
+                <button mat-button (click)="changeCurrentState()">Fermer</button>
+                <button mat-button (click)="editQuestion()">Sauvegarder</button>
+            </mat-dialog-actions>
+        </ng-container>
+
+        <ng-container *ngSwitchDefault></ng-container>
+    </ng-container>
+</div>

@@ -1,0 +1,58 @@
+@import '../../../common-client/constant/constant.scss';
+
+.header {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    gap: $header-gap;
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin: 20px 0;
+}
+
+.header h1 {
+    font-size: $header-font-size;
+    margin: 0;
+}
+
+.header a {
+    display: flex;
+    align-items: center;
+}
+
+.home img {
+    height: auto;
+    width: $logo-home-size;
+}
+
+.admin img,
+.create img,
+.wait img {
+    height: auto;
+    width: $logo-size;
+}
+
+.game.header h1 {
+    font-weight: bold;
+    font-size: 3.5em;
+    font-family: 'Arial', sans-serif;
+    color: #141726;
+    text-shadow: 2px 2px 4px #bd218e;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.game.header {
+    position: relative;
+    margin: 0;
+}
+
+.game.header img {
+    width: 120px;
+    height: auto;
+    display: block;
+}

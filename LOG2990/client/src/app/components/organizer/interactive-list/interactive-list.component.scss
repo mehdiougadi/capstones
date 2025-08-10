@@ -1,0 +1,92 @@
+@import '../../../common-client/constant/constant.scss';
+
+p {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bolder;
+    color: black;
+    margin: 0;
+}
+
+h2 {
+    text-align: center;
+    margin: 0%;
+}
+
+label {
+    text-align: center;
+}
+
+
+section {
+    flex-direction: column;
+}
+
+section,
+section div div {
+    display: flex;
+    gap: $base-gap;
+    border-radius: $base-border-radius;
+}
+
+section div div .filter-options {
+    align-items: center;
+    margin-left: $base-border-radius;
+    margin-right: $base-border-radius;
+    gap: 10px;
+}
+
+.player.info {
+    align-items: center;
+    width: max-content;
+    i {
+        color: black;
+    }
+}
+
+.players.container > div {
+    display: flex;
+    height: 400px;
+    overflow-y: auto;
+    flex-direction: column;
+    grid-gap: 10px;
+    align-items: center;
+    background-color: white;
+}
+
+.color-red {
+    color: red;
+}
+.color-yellow {
+    color: yellow;
+}
+.color-green {
+    color: green;
+}
+.color-black {
+    text-decoration: line-through;
+    color: black;
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: row;
+}
+
+.arrow-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+    gap: 0px !important;
+}
+
+.arrow-container button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 24px;
+    margin-bottom: 0px; 
+}
+

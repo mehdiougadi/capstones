@@ -1,0 +1,18 @@
+<section *ngIf="currentQuiz">
+    <div>
+        <p>Nom:</p>
+        <p>{{ currentQuiz.title }}</p>
+    </div>
+    <div>
+        <p>Description:</p>
+        <p>{{ currentQuiz.description }}</p>
+    </div>
+    <div *ngIf="currentQuiz.questions">
+        <p>Nombre de questions:</p>
+        <p>{{ currentQuiz.questions.length }}</p>
+    </div>
+    <div>
+        <p>Temps pour chaque question:</p>
+        <p>{{ currentQuiz.duration }}</p>
+    </div>
+</section>

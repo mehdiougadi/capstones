@@ -1,0 +1,118 @@
+<section>
+    <app-header [currentState]="currentStateHeader"></app-header>
+    <div [ngSwitch]="roundStarting" class="content holder">
+        <ng-container *ngSwitchCase="false">
+            <div *ngIf="this.gameStarted">
+                <app-interactive-list [currentRoom]="this.currentRoom"></app-interactive-list>
+            </div>
+            <div *ngIf="this.currentRoom">
+                <div class="game start container" *ngIf="this.gameStarted; else notStarted">
+                    <div *ngIf="isLastQuestion(); else gameNotDone" class="before round container"></div>
+                    <ng-template #gameNotDone>
+                        <div *ngIf="!isResultsPage">
+                            <div class="context question holder">
+                                <div class="question-info">
+                                    <div class="question-container">
+                                        <p class="title">
+                                            {{ currentRoom.quiz.questions[currentRoom.currentQuestionIndex].text }} ({{
+                                                currentRoom.quiz.questions[currentRoom.currentQuestionIndex].points
+                                            }}
+                                            pts)
+                                        </p>
+                                        <button *ngIf="timerRunning" class="start button" (click)="stopTimer()">Arreter le timer</button>
+                                        <button *ngIf="!timerRunning" class="start button" (click)="restartTimer()">Partir le timer</button>
+                                        <button class="start button" (click)="enablePanicMode()">Activer le mode panique</button>
+                                    </div>
+                                </div>
+                                <app-timer [room]="currentRoom" class="histogram-timer"></app-timer>
+                            </div>
+                            <div>
+                                <div [class.hidden]="isEvaluatingQrl">
+                                    <app-histogram
+                                        class="histogram"
+                                        [currentRoom]="currentRoom"
+                                        [isGameOver]="gameFinished"
+                                        [index]="currentRoom.currentQuestionIndex"
+                                        [isResultsPage]="isResultsPage"
+                                    ></app-histogram>
+                                </div>
+
+                                <app-qrl-answer [currentRoom]="this.currentRoom" [isDisabled]="isDisabled" *ngIf="isEvaluatingQrl"></app-qrl-answer>
+                            </div>
+                            <div class="button section">
+                                <button
+                                    class="button next state"
+                                    (click)="startNextRound()"
+                                    [disabled]="!roundFinished || gameFinished"
+                                    *ngIf="!isRandomMode"
+                                >
+                                    Prochaine question
+                                </button>
+                                <button class="button next state" (click)="showResults()" [disabled]="!gameFinished">Voir Resultat</button>
+                            </div>
+                        </div>
+                        <div class="results-view-container">
+                            <app-results-view
+                                *ngIf="isResultsPage && gameFinished"
+                                [currentRoom]="this.currentRoom"
+                                [roomId]="this.currentRoom.id"
+                            ></app-results-view>
+                        </div>
+                    </ng-template>
+                </div>
+                <ng-template #notStarted>
+                    <div class="during round container">
+                        <div class="code container">
+                            <h1 class="access-code">Code d'Accès de la salle: {{ currentRoom.accessCode }}</h1>
+                        </div>
+                        <div class="info room holder">
+                            <div class="player info">
+                                <div class="player container">
+                                    <p class="title">Liste de joueurs présents</p>
+
+                                    <app-player-waiting-list
+                                        [currentRoom]="this.currentRoom"
+                                        [adminEditor]="true"
+                                        class="app-player-waiting-list"
+                                    ></app-player-waiting-list>
+                                </div>
+                            </div>
+                            <div class="quiz info">
+                                <div class="quiz container">
+                                    <p class="title">Informations sur le questionnaire</p>
+                                    <app-quiz-info-display [currentQuiz]="this.currentRoom.quiz"></app-quiz-info-display>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="button holder">
+                            <div class="button section">
+                                <div class="checkbox button" [ngClass]="{ locked: this.currentRoom.isLocked, unlocked: !this.currentRoom.isLocked }">
+                                    <label for="lockCheckbox">{{ this.currentRoom.isLocked ? 'Salle verrouillée' : 'Salle déverrouillée' }}</label>
+                                    <input
+                                        type="checkbox"
+                                        id="lockCheckbox"
+                                        (click)="changeRoomState()"
+                                        [(ngModel)]="this.currentRoom.isLocked"
+                                        hidden
+                                    />
+                                </div>
+                                <button class="start button" (click)="startGame()">Commencer le jeu</button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+            <app-sidebar [isPlayer]="false" [currentPlayer]="this.host"></app-sidebar>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="true">
+            <div class="starting round">
+                <p class="timer title">{{ currentRoom.quiz.title }} commence dans</p>
+                <app-timer [room]="currentRoom"></app-timer>
+            </div>
+        </ng-container>
+    </div>
+</section>
+<audio id="audioPlayer">
+    <source src="./assets/sounds/alien_danger.wav" type="audio/mpeg" />
+</audio>

@@ -1,0 +1,17 @@
+@import '../../../common-client/constant/constant.scss';
+
+footer {
+    text-align: center;
+    position: absolute;
+    color: $secondary-color;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    margin: 10px 0;
+}
+
+h4,
+p {
+    margin: 0;
+    padding: 0;
+}

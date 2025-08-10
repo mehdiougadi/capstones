@@ -1,0 +1,57 @@
+@import '../../../common-client/constant/constant.scss';
+
+p {
+    margin: 0;
+}
+
+.modal.container {
+    display: grid;
+    justify-content: center;
+    background-color: white;
+    gap: $base-gap;
+    width: $modal-question-display-width;
+    margin: $modal-question-display-margin;
+    padding: $modal-question-display-padding;
+    border-radius: $modal-question-display-border-radius;
+    box-shadow: $modal-question-display-box-shadow;
+}
+
+.info.container {
+    display: flex;
+    gap: $base-gap;
+}
+
+.info.container > input {
+    flex-grow: 1;
+}
+
+.mat-mdc-dialog-actions {
+    color: white;
+    display: flex;
+    justify-content: center;
+    gap: $base-gap;
+}
+
+.mat-mdc-dialog-actions button,
+.button {
+    color: white;
+    background-color: $primary-color;
+    margin-top: $modal-question-display-button-margin-top;
+}
+
+.choice.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $base-gap;
+}
+
+.new.state.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.green-text {
+    color: green;
+}

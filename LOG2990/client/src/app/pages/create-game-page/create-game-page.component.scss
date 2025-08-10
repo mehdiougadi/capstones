@@ -1,0 +1,137 @@
+@import '../../common-client/constant/constant.scss';
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: $home-page-height;
+}
+
+.content.holder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content.container > div {
+    position: relative;
+    width: 40%;
+}
+
+.setting.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    overflow-y: auto;
+    color: black;
+    border-radius: $base-border-radius;
+}
+
+.setting.container p.instruction.message {
+    position: relative;
+    top: 40%;
+    text-align: center;
+    width: 100%;
+    font-size: 40px;
+    margin: 0;
+}
+
+.quiz.details {
+    display: flex;
+    flex-direction: column;
+    gap: $base-gap;
+    width: 90%;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    h1,
+    h3 {
+        margin: 0;
+    }
+    ul {
+        list-style-type: NONE;
+        width: 100%;
+        padding: 0;
+
+        li {
+            margin: 5px 0;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    }
+}
+
+.quizzes.holder {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    align-items: center;
+    gap: $base-gap;
+}
+
+.content.container {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    width: $create-page-content-width;
+    height: $create-page-content-height;
+}
+
+.quiz.container {
+    display: flex;
+    color: white;
+    width: 80%;
+    margin-top: $game-in-games-margin-top;
+    padding: $game-in-games-padding;
+    background-color: $quiz-in-list;
+    border-radius: $game-in-games-border-radius;
+}
+
+.quiz.container p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.description {
+    margin-left: auto;
+}
+
+.quiz.container:hover {
+    color: black;
+    background-color: $accent-color;
+}
+
+.create-game.button {
+    display: flex;
+    gap: $base-gap;
+}
+
+.create-game.button button {
+    color: black;
+    margin: $create-play-button-margin;
+    background-color: white;
+    border-radius: $base-border-radius;
+    font-size: $create-play-button-font-size;
+    padding: $create-play-button-padding;
+}
+
+.create-game.button button:hover {
+    background-color: $accent-color;
+}
+
+.setting.container::-webkit-scrollbar-thumb {
+    background: $primary-color;
+}
+
+.QCM {
+    background-color: $question-qcm-tag;
+}
+
+.QRL {
+    background-color: $question-qrl-tag;
+}

@@ -1,0 +1,21 @@
+<div class="content container">
+    <p class="title">Clavardage ({{ currentPlayer.name }})</p>
+    <div class="chat-container">
+        <div class="chat">
+            <div *ngFor="let message of listMessages" [ngClass]="{ 'red-message': message.author === 'système', 'message': message.author !== 'système'}"> 
+                ({{ message.time }}) {{ message.author }}: {{ message.message }}
+            </div>
+        </div>
+    </div>
+    <div class="message input">
+        <input
+            [(ngModel)]="newMessage"
+            type="text"
+            placeholder="Écrire un message..."
+            (focus)="onInputFocus()"
+            (blur)="onInputBlur()"
+            (keyup.enter)="newMessage.length > 200 ? null : sendMessage(newMessage)"
+        />
+        <button (click)="sendMessage(newMessage)" [disabled]="newMessage.length > 200">Envoyer</button>
+    </div>
+</div>

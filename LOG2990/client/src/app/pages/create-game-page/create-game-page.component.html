@@ -1,0 +1,44 @@
+<section>
+    <div class="content holder">
+        <app-header [currentState]="currentStateHeader"></app-header>
+        <div class="content container">
+            <div class="setting container">
+                <div *ngIf="selectedQuiz; else noQuizSelected" class="quiz details">
+                    <h1 class="quiz title">{{ selectedQuiz.title }}</h1>
+                    <h3 class="quiz description">{{ selectedQuiz.description }}</h3>
+                    <h3 class="quiz timing">Temps par question: {{ selectedQuiz.duration }} secondes</h3>
+                    <input type="range" id="quizDuration" name="quizDuration" [(ngModel)]="selectedQuiz.duration" min="10" max="60" step="1" hidden />
+                    <h3 class="questions header">Liste des Questions</h3>
+                    <ul class="questions list">
+                        <li
+                            *ngFor="let question of selectedQuiz.questions"
+                            [ngClass]="{
+                                QCM: question.type === 'QCM',
+                                QRL: question.type === 'QRL'
+                            }"
+                        >
+                            {{ question.text }}
+                        </li>
+                    </ul>
+                </div>
+                <ng-template #noQuizSelected>
+                    <p class="instruction message">Sélectionner un questionnaire</p>
+                </ng-template>
+            </div>
+
+            <div class="quizzes holder">
+                <div class="create-game button">
+                    <button (click)="startRandomMode()">Jour en mode aléatoire</button>
+                </div>
+                <div class="quiz container" *ngFor="let quiz of this['quizManagerService'].visibleQuiz" (click)="selectQuiz(quiz)">
+                    <p>{{ quiz.title }}</p>
+                    <p class="description">#{{ quiz.description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="selectedQuiz" class="create-game button">
+        <button (click)="startGame()">Tester le Jeu!</button>
+        <button (click)="masterWaitingRoom()">Creer une partie!</button>
+    </div>
+</section>

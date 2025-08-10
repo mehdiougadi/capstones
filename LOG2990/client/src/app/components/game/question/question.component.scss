@@ -1,0 +1,112 @@
+@import '../../../common-client/constant/constant.scss';
+
+.container {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(214deg, rgba(2, 0, 36, 1) 0%, rgba(214, 35, 217, 1) 0%, rgba(10, 7, 115, 1) 100%);
+}
+
+.grid.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.option.container {
+    display: grid;
+    grid-template-columns: $grid-template-general;
+    gap: $option-container-gap;
+}
+
+.option.container button {
+    flex: 1;
+    width: 97%;
+    min-width: 50%;
+    font-size: 25px;
+    margin-top: 10px;
+    border-radius: 5px;
+    margin-left: 6px;
+    margin-bottom: 7px;
+    background-color: var(--button-bg-color, rgba(255, 255, 255, 0.6));
+    box-shadow: 0 0 0 2px var(--button-bg-color);
+    color: black;
+    border: none;
+    cursor: pointer;
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease;
+}
+.option.container button[disabled] {
+    flex: 1;
+    width: 97%;
+    min-width: 50%;
+    font-size: 25px;
+    margin-top: 10px;
+    border-radius: 5px;
+    margin-left: 6px;
+    margin-bottom: 7px;
+    background-color: var(--button-bg-color, rgba(255, 255, 255, 0.2));
+    box-shadow: 0 0 0 2px var(--button-bg-color);
+    color: black;
+    border: none;
+    cursor: pointer;
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease;
+}
+
+.option.container button:hover {
+    transform: scale(1.02);
+}
+
+.option.container button.correct-answer {
+    --button-bg-color: #72eb4f;
+}
+.option.container.disabled {
+    color: rgb(0, 255, 68);
+}
+.option.container button.incorrect-answer {
+    --button-bg-color: red;
+}
+.option.container .button-selected {
+    --button-bg-color: #ff00b3;
+}
+.option.container .button-selected[disabled] {
+    --button-bg-color: #c51e93;
+}
+
+.grid.container h2 {
+    font-size: $base-font-size;
+    margin: 0;
+}
+
+.grid.container h1 {
+    font-size: $question-font-size;
+}
+
+.button-selected {
+    color: white;
+    background-color: $selected-option-color;
+}
+
+.incorrect-answer {
+    background-color: red;
+    color: rgb(255, 255, 255);
+}
+
+.correct-answer {
+    background-color: green;
+    color: rgb(255, 255, 255);
+}
+
+.character-count {
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+textarea {
+    width: 500px;
+    height: 100px;
+    resize: none;
+}
