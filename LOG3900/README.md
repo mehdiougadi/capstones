@@ -62,6 +62,3 @@ flutter pub get
 ```bash
 flutter run
 ```
-
-## 📩 Contact
-For inquiries, suggestions, or collaboration, feel free to reach out to us at Mehdiougadiofficial@gmail.com.
