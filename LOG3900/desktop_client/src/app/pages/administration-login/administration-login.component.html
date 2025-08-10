@@ -1,0 +1,16 @@
+<body>
+    <app-logo></app-logo>
+    <div class="page">
+        <div class="login-container">
+            <h2>Authentification</h2>
+            <form (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="password">Mot de passe:</label>
+                    <input type="password" id="password" name="password" [(ngModel)]="password" required />
+                </div>
+                <button type="submit">Se connecter</button>
+            </form>
+            <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+        </div>
+    </div>
+</body>

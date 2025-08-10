@@ -1,0 +1,139 @@
+#popup {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 15px;
+    max-height: 80vh;
+    scroll-margin-top: 0;
+    overflow: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+}
+
+.history-container-filled {
+    display: block;
+    max-height: 65vh;
+    overflow-y: auto;
+    background-color: white;
+}
+
+#history-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#history-table thead th {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-top: none;
+    box-shadow: inset 0px 1px 0px 0px #ddd;
+    position: sticky;
+    top: 0;
+    background-color: #f2f2f2;
+    z-index: 10;
+}
+
+#history-table tbody td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+#history-table thead {
+    background-color: #f2f2f2;
+}
+
+#history-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#history-table tbody tr:hover {
+    background-color: #e0e0e0;
+}
+
+.div {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#name-header,
+#date-header {
+    align-items: center;
+    cursor: pointer;
+}
+
+#name-sort-indicator,
+#date-sort-indicator {
+    margin-left: 5px;
+}
+
+#loading-container {
+    display: flex;
+    align-items: center;
+}
+
+#loading-container span {
+    margin-left: 10px;
+}
+
+.sort-cell {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button-delete-div {
+    display: flex;
+    justify-content: center;
+    padding-top: 3vh;
+}
+
+.button-delete {
+    border: 1px solid rgba(27, 31, 35, .15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    background-color: #de3d3d;
+    padding: 8px 16px;
+}
+
+.button-delete:hover {
+    background-color: #982b2b;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000;
+}

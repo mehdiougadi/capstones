@@ -1,0 +1,16 @@
+<div class="page-container">
+    <app-logo class="logo"></app-logo>
+    <app-carousel class="carousel" [isAdministration]="true"></app-carousel>
+    <button (click)="showHistory()" id="btn-history">Afficher l'historique</button>
+    <div id="btn-container" class="centered-content">
+        <div class="import-game-container">
+            <label class="custom-file-label">
+                Sélectionner un fichier
+                <input type="file" #fileInput accept=".json" title="Aucun fichier sélectionné" (change)="importGame(fileInput)" class="file-input" />
+            </label>
+        </div>
+        
+        
+        <button (click)="createGame()" id="btn-create-game" class="create-game-button">Créer jeu</button>
+    </div>
+</div>

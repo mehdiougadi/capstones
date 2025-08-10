@@ -1,0 +1,10 @@
+<div *ngIf="currentQuestionType === 'QRL' && evaluating">
+    <p>Réponse: {{ currentEvaluation.answer }}</p>
+    <mat-chip-listbox class="mat-mdc-chip-set-stacked" aria-label="Color selection">
+        <mat-chip-option #chip *ngFor="let score of scores; index as i" [color]="color[i]" (click)="selectChip(i, chip)"
+            >{{ score }}%</mat-chip-option
+        >
+    </mat-chip-listbox>
+    <button *ngIf="selectedChipIndex === null" class="submit-btn" disabled="true" (click)="sendEvaluation()">Envoyer</button>
+    <button *ngIf="selectedChipIndex !== null" class="submit-btn" (click)="sendEvaluation()">Envoyer</button>
+</div>

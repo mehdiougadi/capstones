@@ -1,0 +1,101 @@
+.game-card {
+    width: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    margin: 10px;
+}
+
+.modification-time {
+    margin: 0;
+}
+
+.container {
+    padding: 16px;
+}
+
+.game-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 8px;
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+    line-height: 1.2em;
+}
+
+.game-title::after {
+    content: '';
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20%;
+    height: 1.2em;
+    background: linear-gradient(to left, white, rgba(255, 255, 255, 0));
+}
+
+.game-duration,
+.game-last-modification {
+    text-align: center;
+    color: #777;
+    margin-bottom: 4px;
+}
+
+.game-isVisible {
+    text-align: center;
+}
+.game-questions {
+    color: #555;
+    margin-bottom: 12px;
+}
+.change-visibility-button {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.visible {
+    color: #0ca823;
+}
+.hidden {
+    color: #de3d3d;
+}
+
+.btn-game-container {
+    text-align: center;
+    margin-top: 16px;
+}
+
+.button {
+    background-color: #007BFF;
+    color: #fff;
+    border: 1px solid rgba(27, 31, 35, .15);
+    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin: 4px;
+    font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.delete {
+    background-color: #de3d3d;
+}
+.delete:hover {
+    background-color: #982b2b;
+}

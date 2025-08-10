@@ -1,0 +1,14 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" opened="false" position="end">
+        <app-chat (toggleSidebar)="sidenav.toggle()"></app-chat>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="container">
+            <section class="play-area-container" *ngIf="gameId && gameMode">
+                <app-play-area class="play-area" [gameId]="gameId" [gameMode]="gameMode" tabindex="0"></app-play-area>
+            </section>
+        </div>
+        <app-chat-badge [chatOpened]="sidenav.opened" (click)="sidenav.toggle()"></app-chat-badge>
+    </mat-sidenav-content>
+</mat-sidenav-container>

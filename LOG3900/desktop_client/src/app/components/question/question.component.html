@@ -1,0 +1,91 @@
+<section *ngIf="timer && questionState === questionStateEnum.InQuestion" id="timer-container" class="timer-section">
+    <div class="timer-circle">{{ timer }}</div>
+</section>
+<div class="question" *ngIf="question.text.length > 0">
+    <ng-container *ngIf="questionState === questionStateEnum.Evaluating && gameMode === gameModeEnum.Player; else notEvaluating">
+        <p class="waiting-message">L'organisateur est en train d'évaluer les réponses des joueurs</p>
+    </ng-container>
+    <ng-template #notEvaluating>
+        <ng-container *ngIf="questionState === questionStateEnum.Submitted && gameMode === gameModeEnum.Player; else other">
+            <p class="waiting-message">En attente des autres joueurs</p>
+        </ng-container>
+    </ng-template>
+
+    <ng-template #other class="answer-area">
+        <div *ngIf="questionState === questionStateEnum.ShowAnswers">
+            <h2
+                [ngClass]="{
+                    'points-gained': pointsGained >= question.points,
+                    'points-not-gained': pointsGained <= 0,
+                    'points-half-gained': question.points > pointsGained && pointsGained > 0
+                }"
+            >
+                +{{ pointsGained }} points
+            </h2>
+        </div>
+        <h2 class="question-text">{{ question.text }} ({{ question.points }} points)</h2>
+        <div *ngIf="question.type === 'QCM'">
+            <label
+                *ngFor="let choice of question.choices; let i = index"
+                [ngClass]="{
+                    ' correct-answer ': questionState === questionStateEnum.ShowAnswers && (choice.isCorrect || correctChoices.includes(i)),
+                    ' wrong-answer ': questionState === questionStateEnum.ShowAnswers && !choice.isCorrect && !correctChoices.includes(i),
+                    ' selected-answer ': choice.selected,
+                    'checkbox-label': true
+                }"
+            >
+                <div class="answer-container">
+                    <input
+                        type="checkbox"
+                        [disabled]="questionState !== questionStateEnum.InQuestion"
+                        [(ngModel)]="choice.selected"
+                        (click)="toggleAnswer(choice, i)"
+                        tabindex="{{ i + 1 }}"
+                    />
+                    <span class="check-mark"></span>
+                    {{ i + 1 }} - {{ choice.text }}
+                </div>
+                <div class="result-container">
+                    <mat-icon
+                        class="result"
+                        *ngIf="questionState === questionStateEnum.ShowAnswers && (choice.isCorrect || correctChoices.includes(i))"
+                        >check</mat-icon
+                    >
+                    <mat-icon
+                        class="result"
+                        *ngIf="questionState === questionStateEnum.ShowAnswers && !choice.isCorrect && !correctChoices.includes(i)"
+                        >close</mat-icon
+                    >
+                </div>
+            </label>
+        </div>
+        <div *ngIf="question.type === 'QRL'" class="qrl-container">
+            <div class="textarea-container">
+                <textarea
+                    [disabled]="questionState !== questionStateEnum.InQuestion"
+                    [(ngModel)]="inputAnswer"
+                    (input)="modifyAnswer()"
+                    (keydown.enter)="submitAnswer()"
+                    matInput
+                    id="description"
+                    #textarea
+                    class="input-textarea"
+                    placeholder="Entrez votre réponse..."
+                    maxlength="200"
+                ></textarea>
+                <div class="counter-container">
+                    <mat-hint> {{ textarea.value.length }}/200</mat-hint>
+                </div>
+            </div>
+        </div>
+        <button class="submit-btn" *ngIf="questionState === questionStateEnum.InQuestion" (click)="submitAnswer()">Soumettre</button>
+        <div
+            class="countdown-overlay"
+            *ngIf="timer !== undefined && questionState === questionStateEnum.ShowAnswers && gameMode === gameModeEnum.Player"
+        ></div>
+        <div class="countdown" *ngIf="timer !== undefined && questionState === questionStateEnum.ShowAnswers && gameMode === gameModeEnum.Player">
+            {{ timer }}
+        </div>
+        <p class="organizer-wait" *ngIf="questionState === questionStateEnum.ShowAnswers && gameMode !== gameModeEnum.Test">En attente de l'organisateur pour continuer...</p>
+    </ng-template>
+</div>

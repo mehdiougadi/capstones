@@ -1,0 +1,12 @@
+<div class="histogram">
+    <div *ngFor="let choice of choices" class="histogram-bar">
+        <div class="choice-text">{{ choice.text }}</div>
+        <div class="choice-count">
+            <div
+                [ngClass]="{ correct: choice.isCorrect, incorrect: !choice.isCorrect }"
+                [style.width.%]="getPercentage(choice.selectedCount) + 1"
+            ></div>
+            <span>{{ choice.selectedCount }}</span>
+        </div>
+    </div>
+</div>

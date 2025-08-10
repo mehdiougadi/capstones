@@ -1,0 +1,9 @@
+<div class="content-container">
+    <div class="carousel" cdkScrollable>
+        <div class="zoom items" *ngFor="let game of gamesToDisplay">
+            <app-game-card (reloadParent)="reloadComponent($event)" [isAdministration]="isAdministration" [game]="game"></app-game-card>
+        </div>
+    </div>
+
+    <mat-paginator class="paginator" [length]="games.length" [pageSize]="4" (page)="onPageChange($event)"></mat-paginator>
+</div>

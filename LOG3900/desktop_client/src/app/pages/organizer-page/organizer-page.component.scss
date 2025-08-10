@@ -1,0 +1,256 @@
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.play-area-container {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    width: 80%;
+}
+
+#sidebar {
+    flex-basis: 350px;
+    min-width: 200px;
+}
+
+.organizer-page {
+    display: flex;
+    width: 85vw;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.content-left {
+    width: 50%;
+    margin-right: 50px;
+}
+
+.content-right {
+    flex-basis: 300px;
+}
+.question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block: 20px;
+}
+.chat {
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+p {
+    font-size: 16px;
+    justify-content: center;
+}
+.app-chat {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.player-list {
+    margin-top: 20px;
+    width: 50%;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+:host ::ng-deep .mat-mdc-standard-chip.mat-mdc-chip-selected.mat-warn {
+    background-color: #de3d3d;
+}
+:host ::ng-deep .mat-mdc-standard-chip.mat-mdc-chip-selected.mat-accent {
+    background-color: #f3b400;
+}
+:host ::ng-deep .mat-mdc-standard-chip.mat-mdc-chip-selected.mat-primary {
+    background-color: #4caf50;
+}
+
+.abandoned {
+    text-decoration: line-through;
+    color: #888;
+}
+.noInteraction {
+    color: #de1515;
+}
+.firstInteraction {
+    color: #f3b400;
+}
+.confirmation {
+    color: #4caf50;
+}
+.join-room-button:hover {
+    background-color: #0056b3;
+}
+.button-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px 0;
+}
+button {
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+}
+
+.abandon-button {
+    background-color: #de3d3d;
+}
+
+.abandon-button:hover {
+    background-color: #6c1e1e;
+}
+
+.submit-btn {
+    background-color: #007bff;
+    margin-top: 20px;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+mat-divider {
+    margin: 20px 0;
+}
+.sort-buttons-container {
+    display: flex;
+    flex-direction: row;
+    margin-block: 10px;
+    min-width: 258px;
+}
+
+.player-scores-container {
+    grid-gap: 10px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    width: 100%;
+    padding-bottom: 5px;
+    max-width: 400px;
+    align-items: center;
+}
+
+.sort-buttons {
+    margin-right: 10px;
+}
+
+.player-name-point {
+    margin-bottom: 0px;
+    margin-right: 5px;
+}
+
+.arrow-up {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.arrow-down {
+    display: inline-block;
+    transform: rotate(180deg);
+    transition: transform 0.2s ease;
+}
+
+.sort-button {
+    background-color: #dadada;
+    margin-left: 10px;
+    border-radius: 10px;
+    border-color: #dadada;
+}
+
+.sort-button.selected {
+    border-width: 1px;
+    border-color: #d3d3d3;
+    border-radius: 10px;
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.player-info {
+    padding-top: 1px;
+    padding-left: 1px;
+    flex-grow: 1;
+}
+
+.player-name {
+    word-break: break-word;
+}
+
+#ban {
+    margin-right: 25px;
+}
+
+.example-container {
+    height: 100%;
+}
+
+.mat-sidenav-content {
+    height: 100vh;
+    background: none;
+}
+
+.chat-icon-section {
+    padding: 5px;
+}
+
+#chat-badge {
+    margin-top: 5px;
+}
+
+.badge-button {
+    border-bottom-left-radius: 10px;
+    display: flex;
+    transform: scale(2);
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.chat-icon-section {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.player-header {
+    font-weight: bold;
+    word-wrap: break-word;
+}

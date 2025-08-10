@@ -1,0 +1,181 @@
+.container img {
+    max-width: 75%;
+    height: auto;
+}
+
+.header-item {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: #fff;
+    padding: 20px;
+    z-index: 999;
+}
+
+.footer-item {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    z-index: 999;
+}
+
+.footer-item p :nth-child(even) {
+    color: rgb(133, 133, 133);
+}
+
+.footer-item p :nth-child(odd) {
+    color: rgb(53, 53, 55);
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 75%;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.button-box {
+    background-color: #fff;
+    width: 250px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.justified {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.justified > .button-box > .home-option {
+    appearance: none;
+    background-color: #007bff;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    margin-top: 10px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 200px;
+    transition: background-color 0.2s;
+}
+
+.justified > .button-box > .home-option:focus:not(:focus-visible):not(.focus-visible) {
+    box-shadow: none;
+    outline: none;
+}
+
+.justified > .button-box > .home-option:hover {
+    background-color: #0056b3;
+}
+
+.justified > .button-box > .home-option:focus {
+    box-shadow: #b0c7e1;
+    outline: none;
+}
+
+.justified > .button-box > .home-option:disabled {
+    background-color: #b0c7e1;
+    color: #a0a0a0;
+    cursor: default;
+}
+
+.justified > .button-box > .home-option:active {
+    background-color: #81b1e9;
+    box-shadow: rgba(20, 70, 32, 0.2) 0 1px 0 inset;
+}
+
+#server-message {
+    justify-content: center;
+    width: 20%;
+    min-width: min-content;
+}
+
+.popup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.popup-content {
+    position: relative;
+    padding: 20px 0px 20px 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    max-width: 800px;
+    margin: 20px auto;
+    border-radius: 6px;
+    overflow-y: scroll;
+    scroll-margin-top: 0;
+    overflow-x: hidden;
+}
+
+.close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.join-room-btn {
+    margin-left: 10px;
+}
+
+.join-lobby-btn {
+    margin-left: 10px;
+}
+
+#lobby-code {
+    padding: 5px;
+}
+
+#player-name {
+    padding: 5px;
+}

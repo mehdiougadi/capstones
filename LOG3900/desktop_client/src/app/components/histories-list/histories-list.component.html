@@ -1,0 +1,57 @@
+<div id="popup">
+    <button class="close-btn" (click)="closePopup()">
+        <mat-icon>close</mat-icon>
+    </button>
+    <div class="history-container">
+        <div *ngIf="loading" id="loading-container">
+            <mat-progress-spinner diameter="30" mode="indeterminate"></mat-progress-spinner>
+            <span>Loading...</span>
+        </div>
+        <div *ngIf="histories.length === 0" id="no-history-message">Aucun historique pour le moment</div>
+        <h1>Historiques des parties</h1>
+        <div class="history-container-filled">
+            <table *ngIf="histories.length > 0" id="history-table">
+                <thead>
+                    <tr>
+                        <th (click)="sortName()" id="name-header">
+                            <div class="sort-cell">
+                                <span>Nom de la partie</span>
+                                <div *ngIf="sortedNameASC" id="name-sort-indicator">
+                                    <mat-icon>arrow_upward</mat-icon>
+                                </div>
+                                <div *ngIf="sortedNameDESC" id="name-sort-indicator">
+                                    <mat-icon>arrow_downward</mat-icon>
+                                </div>
+                            </div>
+                        </th>
+
+                        <th (click)="sortDate()" id="date-header">
+                            <div class="sort-cell">
+                                <span>Date</span>
+                                <div *ngIf="sortedDateASC" id="date-sort-indicator">
+                                    <mat-icon>arrow_upward</mat-icon>
+                                </div>
+                                <div *ngIf="sortedDateDESC" id="date-sort-indicator">
+                                    <mat-icon>arrow_downward</mat-icon>
+                                </div>
+                            </div>
+                        </th>
+                        <th id="players-header">Nombre de joueurs</th>
+                        <th id="score-header">Meilleur score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let history of histories">
+                        <td>{{ history.gameTitle }}</td>
+                        <td>{{ history.date | date: 'yyyy-MM-dd HH:mm:ss' }}</td>
+                        <td>{{ history.numberOfPlayers }}</td>
+                        <td>{{ history.bestScore }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="button-delete-div">
+        <button class="button-delete" (click)="deleteAllHistories()">Supprimer l'historique</button>
+    </div>
+</div>

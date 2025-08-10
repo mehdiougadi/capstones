@@ -1,0 +1,30 @@
+:host ::ng-deep .mat-mdc-standard-chip.mat-mdc-chip-selected.mat-warn {
+    background-color: #de3d3d;
+}
+:host ::ng-deep .mat-mdc-standard-chip.mat-mdc-chip-selected.mat-accent {
+    background-color: #f3b400;
+}
+:host ::ng-deep .mat-mdc-standard-chip.mat-mdc-chip-selected.mat-primary {
+    background-color: #4caf50;
+}
+
+.submit-btn {
+    background-color: #007bff;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}

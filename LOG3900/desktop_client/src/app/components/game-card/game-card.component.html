@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<div class="game-card">
+    <div class="container">
+        <div>
+            <p class="game-title">
+                {{ game.title }}
+            </p>
+        </div>
+        <div class="game-duration">{{ game.duration }} secondes par questions</div>
+        <div class="game-last-modification">
+            <p class="modification-time">Dernière modification:</p>
+            <p>{{ time }}</p>
+        </div>
+        <div class="game-questions">{{ game.questions.length }} Questions</div>
+        <div class="game-isVisible">
+            <button class="change-visibility-button" (click)="changeVisibility()">
+                <i class="material-icons">
+                    {{ game.isVisible ? 'visibility' : 'visibility_off' }}
+                </i>
+            </button>
+            <div *ngIf="game.isVisible" class="visible">Visible</div>
+            <div *ngIf="!game.isVisible" class="hidden">Caché</div>
+        </div>
+    </div>
+    <div class="btn-game-container">
+        <div *ngIf="isAdministration">
+            <button class="button" matTooltip="Modifier" (click)="configureGame()">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button class="button" matTooltip="Exporter" (click)="exportGame()">
+                <mat-icon>file_download</mat-icon>
+            </button>
+            <button class="button delete" matTooltip="Supprimer" (click)="deleteGame()">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>

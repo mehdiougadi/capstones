@@ -1,0 +1,108 @@
+#position-display {
+    border: 1px dashed blue;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.total-points {
+    margin: 0px;
+    font-size: 30px;
+}
+
+.start-button {
+    background-color: #2196f3;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.start-button:hover {
+    background-color: #0d6efd;
+}
+
+.position-display {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.keyboard-info {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.pressed-key {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.question-container {
+    margin-inline: 1%;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    padding-inline: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40vw;
+    padding-block: 65px;
+}
+
+.abandon-button {
+    margin-right: 100px;
+    background-color: #de3d3d;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+}
+
+.abandon-button:hover {
+    background-color: #982b2b;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+}
+
+.questionnaire-finished-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #de3d3d;
+}
+
+.correct-answer-message {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4caf50;
+    margin-top: 10px;
+    text-align: center;
+}

@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav mode="side" opened="false" position="end">
+        <app-chat (toggleSidebar)="sidenav.toggle()"></app-chat>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="container">
+            <section class="play-area-container">
+                <div class="lobby-container-justified">
+                    <p class="list-title">Joueurs :</p>
+                    <div *ngFor="let score of lobbyScores">
+                        <div class="player" [ngClass]="{ 'current-player': score.playerName === clientName }">
+                            {{ score.playerName }}
+                            <div class="points">
+                                <span class="player-bonus"> Bonus : {{ score.bonusCount }} </span>
+                                <span class="player-points"> Points : {{ score.points }} </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="results-card">
+                    <button *ngIf="currentIndex === 0" mat-icon-button disabled></button>
+                    <button *ngIf="currentIndex !== 0" mat-icon-button (click)="goToPreviousQuestion()">
+                        <mat-icon>chevron_left</mat-icon>
+                    </button>
+                    <div *ngFor="let question of questions; let i = index">
+                        <mat-card class="results" *ngIf="i === currentIndex">
+                            <h2>Statistiques</h2>
+                            <p>
+                                <b>Question {{ i + 1 }} :</b> {{ question.text }}
+                            </p>
+                            <app-histogram [choices]="histogramChoices[i]"></app-histogram>
+                        </mat-card>
+                    </div>
+                    <button *ngIf="currentIndex !== questions.length - 1" mat-icon-button (click)="goToNextQuestion()">
+                        <mat-icon>chevron_right</mat-icon>
+                    </button>
+                    <button *ngIf="currentIndex === questions.length - 1" mat-icon-button disabled></button>
+                </div>
+                <button class="home" (click)="navigateToHome()">Retour à l'accueil</button>
+            </section>
+            <app-chat-badge [chatOpened]="sidenav.opened" (click)="sidenav.toggle()"></app-chat-badge>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

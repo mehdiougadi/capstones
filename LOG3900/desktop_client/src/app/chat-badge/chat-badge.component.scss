@@ -1,0 +1,22 @@
+.chat-icon-section {
+    padding: 5px;
+}
+
+#chat-badge {
+    margin-top: 5px;
+}
+
+.badge-button {
+    border-bottom-left-radius: 10px;
+    display: flex;
+    transform: scale(2);
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.chat-icon-section {
+    position: absolute;
+    top: 0;
+    right: 0;
+}

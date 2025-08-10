@@ -1,0 +1,47 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<div class="chat-container">
+    <div class="chat-header">
+        <div class="closing-icon-container" (click)="onToggleClick()" matTooltip="Fermer">
+            <mat-icon class="closing-icon">start</mat-icon>
+        </div>
+        <h2>Clavardage</h2>
+    </div>
+    <div class="chat-messages" #chatMessages>
+        <div *ngFor="let message of roomMessages">
+            <ng-container *ngIf="!isCurrentUserMessage(message)">
+                <div class="message-with-info-incoming">
+                    <div class="message incoming">
+                        <p id="inc-chat">{{ message.message }}</p>
+                    </div>
+                    <span class="message-info">{{ message.playerName }} - {{ message.time }}</span>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="isCurrentUserMessage(message)">
+                <div class="message-with-info-outgoing">
+                    <div class="message outgoing">
+                        <p id="out-chat">{{ message.message }}</p>
+                    </div>
+                    <span class="message-info">{{ message.playerName }} - {{ message.time }}</span>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+    <div class="input-container">
+        <div *ngIf="canChat" class="chat-input">
+            <input
+                #chatInput
+                type="text"
+                placeholder="Entrez votre message ici..."
+                [(ngModel)]="inputMessage"
+                (keydown.enter)="sendNewMessage()"
+                type="text"
+            />
+            <button (click)="sendNewMessage()" [ngClass]="{ 'error-button': !checkSizeMessage() }">Envoyer</button>
+        </div>
+        <div *ngIf="!canChat" class="chat-input">
+            <p class="error-200-message">Vous n'avez pas la permission de clavarder.</p>
+            <button (click)="sendNewMessage()" [ngClass]="{ 'error-button': !checkSizeMessage() }" disabled>Envoyer</button>
+        </div>
+        <p class="error-200-message" *ngIf="inputMessage.length > 200">Le message doit être d'un maximum de 200 caractères.</p>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="button-container">
+    <p class="total-points">Total des points: {{ totalPoints }}</p>
+    <button (click)="abandonGame()" class="abandon-button">Quitter</button>
+</div>
+<div id="grid-container" class="container">
+    <p class="correct-answer-message" *ngIf="hasBonus && questionState === questionStateEnum.ShowAnswers">{{ correctAnswerMessage }}</p>
+    <app-question
+        #question
+        [question]="currentQuestion"
+        [timer]="timer"
+        [questionState]="questionState"
+        [correctChoices]="correctChoices"
+        [gameMode]="gameMode"
+        [pointsGained]="pointsGained"
+        (getAnswerEvent)="handleAnswer($event)"
+        class="question-container"
+    ></app-question>
+</div>
